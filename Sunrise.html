@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Multipurpose Cooperative Society</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+  --color-primary: #468008;
+  --color-primary-dark: #103d03;
+  --color-secondary: #e07726;
+  --color-secondary-dark: #cc3300;
+  --color-gray: #4d4d4d;
+  --color-dark: #1a1a1a;
+  --color-light: #ffffff;
+  --font-sans: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--color-dark);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--color-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+.nav-cta {
+  background-color: var(--color-secondary);
+  color: var(--color-light) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.nav-cta:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* Hero Styles */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(70, 128, 8, 0.6) 0%, rgba(16, 61, 3, 0.6) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: var(--color-light);
+  max-width: 800px;
+  margin-left: 10%;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-title span{
+  color: var(--color-secondary);
+}
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+}
+
+.cta-button.primary:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.cta-button.secondary {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+}
+
+.cta-button.secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+}
+
+/* Who We Are Styles */
+.who-we-are {
+  padding: 4rem 0;
+  background-color: #f8f8f8;
+}
+
+.who-we-are h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.who-we-are p {
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+/* Image Grid Styles */
+.image-grid {
+  padding: 4rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.grid-item {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.grid-item h3 {
+  font-size: 1.5rem;
+  color: var(--color-primary-dark);
+  margin: 1rem;
+  font-weight: 600;
+}
+
+.grid-item p {
+  margin: 0 1rem 1rem;
+  color: var(--color-gray);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    clip-path: circle(0% at top right);
+    transition: clip-path 0.5s ease-in-out;
+  }
+
+  .nav-menu.active {
+    clip-path: circle(150% at top right);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dark);
+    transition: all 0.3s ease;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .who-we-are h2 {
+    font-size: 2rem;
+  }
+
+  .who-we-are p {
+    font-size: 1rem;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/full_color_logo-8RuzmK0aZI1rqKpVDHv6k2q1lmWGav.png" alt="Sunrise Cooperative Logo" class="logo-img">
+            </a>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="video-background">
+                <video autoplay loop muted playsinline poster="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_20250212-233817~2-1lHVy4wP7ogoUFCKHhE7geH04LVP44.png">
+                    <source src="https://rztgg9jpu58dsvst.public.blob.vercel-storage.com/1106658835-preview-jpaBzbrb6esrrykzAxSu5jdjRC2XUi.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">What We <span>Plant</span><br>We Become</h1>
+                <p class="hero-subtitle">Cultivating sustainable futures through innovative agricultural practices</p>
+                <div class="hero-cta-group">
+                    <a href="#learn-more" class="cta-button primary">Learn More</a>
+                    <a href="#contact" class="cta-button secondary">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="who-we-are">
+            <div class="container">
+                <h2>Who Are We?</h2>
+                <p>At Sunrise Multipurpose Cooperative Society Ltd., we envision a future where economic prosperity and 
+                natural wellness go hand in hand. By harnessing the power of cooperative collaboration, we aim to 
+                uplift communities, empower farmers, and create sustainable opportunities for our members in Akwa 
+                Ibom and across the diaspora.</p>
+                <p>Our commitment extends beyond financial growth—we strive to promote the richness of organic, 
+                health-enhancing substances, ensuring that their medicinal and nutritional benefits reach people worldwide.</p>
+            </div>
+        </section>
+
+        <section class="image-grid">
+            <div class="container">
+                <div class="grid">
+                    <div class="grid-item">
+                        <img src="https://rztgg9jpu58dsvst.public.blob.vercel-storage.com/images%20(62)-7RNorikQTK2sxW2VO1P9FrlaObgRxk.jpeg" alt="Our Mission">
+                        <h3>Our Mission</h3>
+                        <p>To empower our members through sustainable agricultural practices and financial support.</p>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://rztgg9jpu58dsvst.public.blob.vercel-storage.com/98db611e6bfe4d7e84a8f0ee1c8cbcfa-yBsw3UzhZrclQD6WMmz8eYiv74FY4X.png" alt="Our Objectives">
+                        <h3>Our Objectives</h3>
+                        <p>To promote organic farming, provide financial services, and foster community development.</p>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://rztgg9jpu58dsvst.public.blob.vercel-storage.com/images%20(63)-KAIJXzn4bXmlvL0Ud65P4Lx7V6z7Qx.jpeg" alt="Our Goals">
+                        <h3>Our Goals</h3>
+                        <p>To achieve economic growth, environmental sustainability, and improved quality of life for our members.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sunrise Multipurpose Cooperative Society. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".header")
+  const navToggle = document.querySelector(".nav-toggle")
+  const navMenu = document.querySelector(".nav-menu")
+  const navLinks = document.querySelectorAll(".nav-links a")
+
+  // Header scroll effect
+  let lastScroll = 0
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      header.style.transform = "translateY(-100%)"
+    } else {
+      header.style.transform = "translateY(0)"
+    }
+
+    if (currentScroll > 50) {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0.8)"
+    } else {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    }
+
+    lastScroll = currentScroll
+  })
+
+  // Mobile menu toggle
+  navToggle.addEventListener("click", () => {
+    navToggle.classList.toggle("active")
+    navMenu.classList.toggle("active")
+    document.body.classList.toggle("no-scroll")
+  })
+
+  // Close mobile menu when clicking links
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navToggle.classList.remove("active")
+      navMenu.classList.remove("active")
+      document.body.classList.remove("no-scroll")
+    })
+  })
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault()
+      const target = document.querySelector(this.getAttribute("href"))
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
+    })
+  })
+})
+
+
+    </script>
+</body>
+</html>
+
