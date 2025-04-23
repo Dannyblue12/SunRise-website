@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SunRise Cooperative Multipurpose Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #E07726;
+      --primary-dark: #CC3300;
+      --secondary: #468008;
+      --secondary-dark: #103D03;
+      --white: #FFFFFF;
+      --black: #333333;
+      --gray-light: #F5F5F5;
+      --gray: #DDDDDD;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--black);
+      overflow-x: hidden;
+      background-color: #f8f8f8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header & Navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .header.scrolled {
+      padding: 10px 0;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--black);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+      height: 20px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      position: absolute;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 0;
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 9px;
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 18px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 9px;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      padding: 100px 40px 40px;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--black);
+      transition: var(--transition);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+      color: var(--primary);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 98;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+
+    /* Carousel Styles */
+    .carousel-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+      transform: scale(1);
+      transition: opacity 0.8s ease, transform 8s ease;
+    }
+
+    .carousel-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+      z-index: 1;
+    }
+
+    .carousel-navigation {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      display: flex;
+      gap: 15px;
+      z-index: 10;
+    }
+
+    .carousel-nav-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--white);
+    }
+
+    .carousel-nav-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .carousel-nav-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .carousel-indicator.active {
+      background-color: var(--white);
+      transform: scale(1.2);
+    }
+
+    /* Hero Content */
+    .hero-content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 40px;
+    }
+
+    .hero-content {
+      position: relative;
+      top:120px;
+      z-index: 5;
+      color: var(--white);
+      max-width: 550px;
+      flex: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+    }
+
+    .hero-content.active .hero-subtitle,
+    .hero-content.active .hero-title,
+    .hero-content.active .hero-description,
+    .hero-content.active .hero-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 500;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Carousel Cards - Positioned closer to content */
+    .carousel-cards-wrapper {
+      position: relative;
+      width: 450px;
+      height: 400px;
+      z-index: 5;
+      overflow: visible;
+      margin-left: -40px; /* Moved closer to the content */
+    }
+
+    .carousel-cards {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-card {
+      position: absolute;
+      width: 220px;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform-origin: center;
+      top: 50px;
+    }
+
+    /* Card positions */
+    .carousel-card.active {
+      z-index: 10;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-card.next {
+      z-index: 5;
+      left: calc(100% - 60px);
+      transform: translateX(0);
+    }
+
+    .carousel-card.prev {
+      z-index: 1;
+      left: -100%;
+      opacity: 0;
+    }
+
+    .carousel-card.far {
+      z-index: 0;
+      left: calc(100% + 60px);
+      opacity: 0;
+    }
+
+    .carousel-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-card:hover .carousel-card-img {
+      transform: scale(1.05);
+    }
+
+    .carousel-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .carousel-card-title {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .carousel-card-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.8rem;
+    }
+
+    /* Media Queries */
+    @media (max-width: 1200px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .carousel-cards-wrapper {
+        width: 400px;
+      }
+
+      .carousel-card {
+        width: 200px;
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-content-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+      }
+
+      .carousel-cards-wrapper {
+        width: 100%;
+        height: 320px;
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      .carousel-card {
+        width: 180px;
+        height: 250px;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .carousel-navigation {
+        bottom: 30px;
+        right: 30px;
+      }
+
+      .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .carousel-cards-wrapper {
+        height: 300px;
+      }
+
+      .carousel-card {
+        width: 160px;
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .logo-text span {
+        font-size: 0.7rem;
+      }
+
+      .logo-img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .carousel-cards-wrapper {
+        height: 280px;
+      }
+
+      .carousel-card {
+        width: 140px;
+        height: 200px;
+      }
+
+      .carousel-navigation {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/full_color_icon-HJ2uMbwQUIgoqZgtvCdCYqiyb6e8rK.png" alt="SunRise Logo" class="logo-img">
+          <div class="logo-text">
+            SunRise
+            <span>Cooperative Multipurpose Society</span>
+          </div>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-link active">Home</a></li>
+          <li><a href="#" class="nav-link">About Us</a></li>
+          <li><a href="#" class="nav-link">Investments</a></li>
+          <li><a href="#" class="nav-link">Services</a></li>
+          <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-nav">
+      <li><a href="#" class="mobile-nav-link active">Home</a></li>
+      <li><a href="#" class="mobile-nav-link">About Us</a></li>
+      <li><a href="#" class="mobile-nav-link">Investments</a></li>
+      <li><a href="#" class="mobile-nav-link">Services</a></li>
+      <li><a href="#" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+      <div class="carousel-slide active" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/067c59c5070a50-residential-land-residential-land-for-sale-gwagwalada-abuja-XpEHqJ81MhhQBNCKoeMo6Vg3gIFHeR.jpeg')"></div>
+      <div class="carousel-slide" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2896%29-C97m97wluIR34Mh4lDeFQ8JF6ebDYS.jpeg')"></div>
+      <div class="carousel-slide" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2895%29-tuttjsle1wS1d5iwjrhWwsnfH5u0nd.jpeg')"></div>
+      <div class="carousel-slide" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2897%29-QvdCKKM9MrhPHooyrOdMqDA20ig0dM.jpeg')"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content-wrapper">
+        <!-- Hero Content -->
+        <div class="hero-content active">
+          <h3 class="hero-subtitle">Premium Opportunities</h3>
+          <h1 class="hero-title">Land <span>Investment</span></h1>
+          <p class="hero-description">Secure your future with strategic land acquisitions in high-growth areas. Our land investment opportunities offer secure documentation and excellent appreciation potential.</p>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary">Explore Opportunities</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+        
+        <!-- Carousel Cards -->
+        <div class="carousel-cards-wrapper">
+          <div class="carousel-cards">
+            <div class="carousel-card prev" data-index="3">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2897%29-QvdCKKM9MrhPHooyrOdMqDA20ig0dM.jpeg" alt="Grants for Businesses" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Grants for Businesses</h4>
+                <p class="carousel-card-subtitle">Business Support</p>
+              </div>
+            </div>
+            <div class="carousel-card active" data-index="0">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/067c59c5070a50-residential-land-residential-land-for-sale-gwagwalada-abuja-XpEHqJ81MhhQBNCKoeMo6Vg3gIFHeR.jpeg" alt="Land Investment" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Land Investment</h4>
+                <p class="carousel-card-subtitle">Strategic Locations</p>
+              </div>
+            </div>
+            <div class="carousel-card next" data-index="1">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2896%29-C97m97wluIR34Mh4lDeFQ8JF6ebDYS.jpeg" alt="Agriculture Investment" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Agriculture Investment</h4>
+                <p class="carousel-card-subtitle">Sustainable Farming</p>
+              </div>
+            </div>
+            <div class="carousel-card far" data-index="2">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2895%29-tuttjsle1wS1d5iwjrhWwsnfH5u0nd.jpeg" alt="Real Estate Investment" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Real Estate Investment</h4>
+                <p class="carousel-card-subtitle">Premium Properties</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Navigation -->
+    <div class="carousel-navigation">
+      <div class="carousel-nav-btn prev">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </div>
+      <div class="carousel-nav-btn next">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+      <div class="carousel-indicator active" data-index="0"></div>
+      <div class="carousel-indicator" data-index="1"></div>
+      <div class="carousel-indicator" data-index="2"></div>
+      <div class="carousel-indicator" data-index="3"></div>
+    </div>
+  </section>
+
+  <script>
+    // DOM Elements
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.overlay');
+    const header = document.querySelector('.header');
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselCards = document.querySelectorAll('.carousel-card');
+    const carouselIndicators = document.querySelectorAll('.carousel-indicator');
+    const prevButton = document.querySelector('.carousel-nav-btn.prev');
+    const nextButton = document.querySelector('.carousel-nav-btn.next');
+    const heroContent = document.querySelector('.hero-content');
+    const carouselCardsWrapper = document.querySelector('.carousel-cards-wrapper');
+    
+    // Content for each slide
+    const slideContents = [
+      {
+        subtitle: "Premium Opportunities",
+        title: "Land <span>Investment</span>",
+        description: "Secure your future with strategic land acquisitions in high-growth areas. Our land investment opportunities offer secure documentation and excellent appreciation potential."
+      },
+      {
+        subtitle: "Sustainable Returns",
+        title: "Agriculture <span>Investment</span>",
+        description: "Invest in modern farming and livestock projects with sustainable yields. Our agricultural investments provide regular dividend payments and contribute to food security."
+      },
+      {
+        subtitle: "Premium Properties",
+        title: "Real Estate <span>Investment</span>",
+        description: "Discover premium residential and commercial properties in prime locations. Our real estate investments offer rental income and significant capital appreciation."
+      },
+      {
+        subtitle: "Business Growth",
+        title: "Grants for <span>Businesses</span>",
+        description: "Support entrepreneurship and innovation with our business grant programs. We provide funding, mentorship, and resources to help businesses thrive and scale."
+      }
+    ];
+    
+    // Current slide index
+    let currentIndex = 0;
+    let isAnimating = false;
+    let startX, moveX;
+    let isDragging = false;
+    
+    // Initialize
+    function init() {
+      setupEventListeners();
+      setupAutoRotation();
+    }
+    
+    // Auto rotation
+    function setupAutoRotation() {
+      setInterval(() => {
+        if (!isDragging && !isAnimating) {
+          goToNextSlide();
+        }
+      }, 5000);
+    }
+    
+    // Setup Event Listeners
+    function setupEventListeners() {
+      // Toggle Mobile Menu
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      // Close mobile menu when clicking overlay
+      overlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Scroll event for header
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Carousel Navigation
+      prevButton.addEventListener('click', goToPrevSlide);
+      nextButton.addEventListener('click', goToNextSlide);
+      
+      // Carousel Cards Click
+      carouselCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const index = parseInt(card.dataset.index);
+          if (index !== currentIndex && !isAnimating) {
+            goToSlide(index);
+          }
+        });
+      });
+      
+      // Carousel Indicators Click
+      carouselIndicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+          const index = parseInt(indicator.dataset.index);
+          if (index !== currentIndex && !isAnimating) {
+            goToSlide(index);
+          }
+        });
+      });
+      
+      // Mobile nav links
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      // Touch/swipe functionality for carousel
+      carouselCardsWrapper.addEventListener('mousedown', dragStart);
+      carouselCardsWrapper.addEventListener('touchstart', dragStart, { passive: false });
+      
+      carouselCardsWrapper.addEventListener('mousemove', dragMove);
+      carouselCardsWrapper.addEventListener('touchmove', dragMove, { passive: false });
+      
+      carouselCardsWrapper.addEventListener('mouseup', dragEnd);
+      carouselCardsWrapper.addEventListener('touchend', dragEnd);
+      
+      carouselCardsWrapper.addEventListener('mouseleave', dragEnd);
+    }
+    
+    // Drag Start
+    function dragStart(e) {
+      if (isAnimating) return;
+      
+      isDragging = true;
+      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+      carouselCardsWrapper.style.cursor = 'grabbing';
+      
+      // Prevent default behavior for touch events to avoid page scrolling
+      if (e.type === 'touchstart') {
+        e.preventDefault();
+      }
+    }
+    
+    // Drag Move
+    function dragMove(e) {
+      if (!isDragging) return;
+      
+      // Prevent default to avoid page scrolling when dragging
+      e.preventDefault();
+      
+      moveX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    }
+    
+    // Drag End
+    function dragEnd(e) {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      carouselCardsWrapper.style.cursor = '';
+      
+      const diffX = (moveX || startX) - startX;
+      
+      // Determine if we should navigate
+      if (Math.abs(diffX) > 30) {
+        if (diffX > 0) {
+          goToPrevSlide();
+        } else {
+          goToNextSlide();
+        }
+      }
+    }
+    
+    // Go to Previous Slide
+    function goToPrevSlide() {
+      if (isAnimating) return;
+      const newIndex = (currentIndex - 1 + carouselSlides.length) % carouselSlides.length;
+      goToSlide(newIndex);
+    }
+    
+    // Go to Next Slide
+    function goToNextSlide() {
+      if (isAnimating) return;
+      const newIndex = (currentIndex + 1) % carouselSlides.length;
+      goToSlide(newIndex);
+    }
+    
+    // Go to Specific Slide
+    function goToSlide(index) {
+      if (isAnimating || index === currentIndex) return;
+      
+      isAnimating = true;
+      
+      // Update slides
+      carouselSlides[currentIndex].classList.remove('active');
+      carouselSlides[index].classList.add('active');
+      
+      // Update indicators
+      carouselIndicators[currentIndex].classList.remove('active');
+      carouselIndicators[index].classList.add('active');
+      
+      // Update carousel cards
+      updateCarouselCards(index);
+      
+      // Update content
+      updateContent(index);
+      
+      // Update current index
+      currentIndex = index;
+      
+      // Reset animation flag after transition
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    }
+    
+    // Update Carousel Cards
+    function updateCarouselCards(activeIndex) {
+      const totalCards = carouselSlides.length;
+      
+      carouselCards.forEach(card => {
+        // Remove all classes first
+        card.classList.remove('active', 'next', 'prev', 'far');
+        
+        const cardIndex = parseInt(card.dataset.index);
+        
+        // Calculate position relative to active card
+        if (cardIndex === activeIndex) {
+          card.classList.add('active');
+        } else if (cardIndex === (activeIndex + 1) % totalCards) {
+          card.classList.add('next');
+        } else if (cardIndex === (activeIndex - 1 + totalCards) % totalCards) {
+          card.classList.add('prev');
+        } else {
+          card.classList.add('far');
+        }
+      });
+    }
+    
+    // Update Content
+    function updateContent(index) {
+      // Remove active class to trigger animation
+      heroContent.classList.remove('active');
+      
+      // Update content after a short delay
+      setTimeout(() => {
+        document.querySelector('.hero-subtitle').textContent = slideContents[index].subtitle;
+        document.querySelector('.hero-title').innerHTML = slideContents[index].title;
+        document.querySelector('.hero-description').textContent = slideContents[index].description;
+        
+        // Add active class back to trigger animation
+        heroContent.classList.add('active');
+      }, 300);
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
