@@ -1,1529 +1,1055 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SunRise Multipurpose Cooperative Society</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-    <style>
-        :root {
-  --color-primary: #468008;
-  --color-primary-dark: #103d03;
-  --color-secondary: #e07726;
-  --color-secondary-dark: #cc3300;
-  --color-gray: #4D4D4D;
-  --color-dark: #1A1A1A;
-  --color-light: #ffffff;
-  --font-sans: "Poppins", sans-serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  color: var(--color-dark);
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.containers {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  background: #ffff;
-  padding: 5rem 0;
-   margin-top: 3rem;
-}
-
-/* Header Styles */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-.logo-img {
-  height: 40px;
-  width: auto;
-}
-
-.nav-menu {
-  display: flex;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.nav-links a {
-  color: var(--color-dark);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--color-primary);
-}
-
-.nav-cta {
-  background: linear-gradient(to right, #E07726, #CC3300);
-  color: var(--color-light) !important;
-  padding: 0.5rem 1.25rem;
-  border-radius: 50px;
-  transition: background-color 0.3s ease;
-  font-weight: 600;
-}
-
-.nav-cta:hover {
-  background: var(--color-secondary);
-}
-
-.nav-toggle {
-  display: none;
-}
-
-/* Hero Styles */
-.hero {
-  position: relative;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video-background video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(70, 128, 8, 0.6) 0%, rgba(16, 61, 3, 0.6) 100%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  color: var(--color-light);
-  max-width: 800px;
-  margin-left: 10%;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.hero-title span {
-  background: linear-gradient(to right, #E07726, #CC3300);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.hero-subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  font-weight: 400;
-}
-
-.hero-cta-group {
-  display: flex;
-  gap: 1rem;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.cta-button.primary {
-  background: linear-gradient(to right, #E07726, #CC3300);
-  color: var(--color-light);
-}
-
-.cta-button.primary:hover {
-  background-color: var(--color-secondary-dark);
-}
-
-.cta-button.secondary {
-  background-color: var(--color-light);
-  color: var(--color-primary);
-}
-
-.cta-button.secondary:hover {
-  background-color: var(--color-primary);
-  color: var(--color-light);
-}
-
-/* Who We Are Styles */
-.who-we-are {
-  padding: 4rem 0; /* Reduced padding to decrease height */
-  background-color: rgba(248, 248, 248, 0.9); /* Slightly increased background opacity */
-  position: relative;
-  overflow: hidden;
-}
-
-.who-we-are::before {
-  content: '';
-  position: absolute;
-  right: -100px;
-  top: -50px;
-  width: 400px;
-  height: 400px;
-  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.25; /* Increased opacity */
-  transform: rotate(15deg);
-}
-
-.who-we-are::after {
-  content: '';
-  position: absolute;
-  left: -150px;
-  bottom: -100px;
-  width: 500px;
-  height: 500px;
-  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.25; /* Increased opacity */
-  transform: rotate(-20deg);
-}
-
-.who-we-are .container {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.who-we-are h2 {
-  font-size: 2.5rem;
-  background: linear-gradient(to right, #468008, #103D03);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  position: relative;
-}
-
-.who-we-are h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background: linear-gradient(to right, #E07726, #CC3300);
-  border-radius: 2px;
-}
-
-.who-we-are p {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto 1.5rem;
-  text-align: center;
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--color-dark); /* Changed to dark color for better contrast */
-  padding: 1rem;
-  border-radius: 8px;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); /* Added text shadow for better readability */
-}
-
-.decorative-logo {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.25; /* Increased opacity */
-}
-
-.decorative-logo-right {
-  right: -50px;
-  top: 50%;
-  transform: translateY(-50%) rotate(15deg);
-}
-
-@media (max-width: 768px) {
-  .who-we-are {
-    padding: 3rem 0; /* Further reduced padding for mobile */
-  }
-
-  .who-we-are::before,
-  .who-we-are::after,
-  .decorative-logo {
-    opacity: 0.2; /* Slightly reduced opacity for mobile to prevent text readability issues */
-  }
-
-  .who-we-are h2 {
-    font-size: 2rem;
-  }
-
-  .who-we-are p {
-    font-size: 1rem;
-    padding: 0.75rem;
-  }
-}
-
-/* Image Grid Styles */
-.image-grid {
-  padding: 4rem 0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.grid-item {
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.grid-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.grid-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.grid-item h3 {
-  font-size: 1.5rem;
-  color: var(--color-primary-dark);
-  margin: 1rem;
-  font-weight: 600;
-}
-
-.grid-item p {
-  margin: 0 1rem 1rem;
-  color: var(--color-gray);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Footer Styles */
-footer {
-            background-color: #1A1A1A;
-            color: #ffffff;
-            padding: 3rem 0 1.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-logo img {
-            width: 100px;
-            height: auto;
-        }
-
-        .footer-logo p {
-            font-weight: 300;
-            color: #f5f5f5;
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #E07726, #CC3300);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-weight: 300;
-            transition: color 0.3s ease;
-            font-size: 0.85rem;
-        }
-
-        .footer-links a:hover {
-            color: #E07726;
-        }
-
-        .contact-info li {
-            color: #f5f5f5;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info i {
-            background: linear-gradient(to right, #E07726, #CC3300);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .social-links a {
-            color: #1A1A1A;
-            background: linear-gradient(to right, #E07726, #CC3300);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 3px 10px rgba(224, 119, 38, 0.4);
-        }
-
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
-            font-weight: 300;
-        }
-
-        @media (max-width: 768px) {
-            footer {
-                padding: 2rem 0 1rem 0;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-logo {
-                grid-column: 1 / -1;
-                text-align: center;
-                align-items: center;
-            }
-
-            .footer-section h3 {
-                margin-bottom: 0.75rem;
-            }
-
-            .footer-links {
-                gap: 0.4rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-info li {
-                justify-content: center;
-            }
-
-            .footer-bottom {
-                margin-top: 1.5rem;
-            }
-        }
-
-        .contact-info li {
-            color: #f5f5f5;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-info i {
-            background: linear-gradient(to right, #E07726, #CC3300);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .social-links a {
-            color: #1A1A1A;
-            background: linear-gradient(to right, #E07726, #CC3300);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(224, 119, 38, 0.4);
-        }
-
-        .footer-bottom {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.9rem;
-            color: #888;
-            font-weight: 300;
-        }
-
-        @media (max-width: 1200px) {
-            .footer-container {
-                grid-template-columns: 1.2fr 1fr 1fr;
-            }
-            
-            .footer-section:last-child {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-            }
-
-            .footer-logo {
-                grid-column: 1 / -1;
-                text-align: center;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            footer {
-                padding: 4rem 0 2rem 0;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                padding: 0 1.5rem;
-            }
-
-            .footer-section h3 {
-                margin-bottom: 1.2rem;
-            }
-
-            .footer-section {
-                text-align: center;
-            }
-
-            .footer-links li:hover {
-                transform: none;
-            }
-
-            .contact-info {
-                justify-content: center;
-            }
-
-            .contact-info li {
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 1rem;
-    clip-path: circle(0% at top right);
-    transition: clip-path 0.5s ease-in-out;
-  }
-
-  .nav-menu.active {
-    clip-path: circle(150% at top right);
-  }
-
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-toggle {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-dark);
-    transition: all 0.3s ease;
-  }
-
-  .hero-content {
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    text-align: center;
-  }
-
-  .hero-cta-group {
-    justify-content: center;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .who-we-are h2 {
-    font-size: 2rem;
-  }
-
-  .who-we-are p {
-    font-size: 1rem;
-  }
-}
-.vision-mission-services {
-    padding: 4rem 0;
-    background-color: #f8f8f8;
-}
-
-.vision-mission-services .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.vision-mission-services .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.vision-mission-services .card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.vision-mission-services .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.vision-mission-services .icon-wrapper {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #468008, #103D03);
-    border-radius: 50%;
-    padding: 2rem;
-}
-
-.vision-mission-services .icon-wrapper svg {
-    width: 100%;
-    height: 100%;
-    color: #ffffff;
-}
-
-.vision-mission-services h3 {
-    font-size: 1.5rem;
-    color: #1A1A1A;
-    margin-bottom: 1rem;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-}
-
-.vision-mission-services h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, #E07726, #CC3300);
-    border-radius: 1.5px;
-}
-
-.vision-mission-services p {
-    font-size: 1rem;
-    color: #4D4D4D;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .vision-mission-services .grid {
-        grid-template-columns: 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SunRise Cooperative Multipurpose Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #E07726;
+      --primary-dark: #CC3300;
+      --secondary: #468008;
+      --secondary-dark: #103D03;
+      --white: #FFFFFF;
+      --black: #333333;
+      --gray-light: #F5F5F5;
+      --gray: #DDDDDD;
+      --transition: all 0.3s ease;
     }
 
-    .vision-mission-services .card {
-        padding: 1.5rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .vision-mission-services .icon-wrapper {
-        width: 100px;
-        height: 100px;
-        padding: 1.75rem;
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--black);
+      overflow-x: hidden;
+      background-color: #f8f8f8;
     }
 
-    .vision-mission-services h3 {
-        font-size: 1.25rem;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .vision-mission-services p {
-        font-size: 0.9rem;
+    ul {
+      list-style: none;
     }
-}
-        .team-section {
-            background: linear-gradient(135deg, #468008, #103D03);
-            padding: clamp(2rem, 5vw, 3rem) 0;
-            min-height: min(300px, 40vh);
-            display: flex;
-            align-items: center;
-        }
 
-        .container {
-            max-width: min(1200px, 95%);
-            margin: 0 auto;
-            padding: 0 clamp(1rem, 3vw, 1.5rem);
-        }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-        }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
 
-        .section-title h2 {
-            color: #fff;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+    /* Header & Navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
 
-        .section-title .subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.875rem, 2vw, 1rem);
-            font-weight: 300;
-        }
+    .header.scrolled {
+      padding: 10px 0;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
 
-        .swiper {
-            width: 100%;
-            padding-bottom: 3rem;
-        }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
 
-        .swiper-slide {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            height: auto;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .team-member {
-            display: grid;
-            grid-template-columns: minmax(250px, 1fr) minmax(300px, 1.5fr);
-            gap: clamp(1.5rem, 4vw, 2rem);
-            padding: clamp(1.5rem, 4vw, 2rem);
-        }
+    .logo-img {
+      width: 50px;
+      height: 50px;
+    }
 
-        .member-image {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1;
-            max-height: 350px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.2;
+    }
 
-        .member-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, #E07726, #CC3300);
-            opacity: 0.1;
-        }
+    .logo-text span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 500;
+    }
 
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+    }
 
-        .member-content {
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    .nav-link {
+      font-weight: 500;
+      color: var(--black);
+      position: relative;
+      transition: var(--transition);
+    }
 
-        .member-name {
-            font-size: clamp(1.5rem, 3vw, 1.8rem);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #E07726, #CC3300);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
 
-        .member-role {
-            color: #fff;
-            font-size: clamp(0.875rem, 2vw, 1rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    }
 
-        .member-bio {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.875rem, 2vw, 0.95rem);
-            line-height: 1.6;
-            font-weight: 300;
-        }
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+      height: 20px;
+      position: relative;
+      z-index: 100;
+    }
 
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #E07726;
-            width: clamp(35px, 5vw, 40px);
-            height: clamp(35px, 5vw, 40px);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            backdrop-filter: blur(4px);
-        }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      position: absolute;
+      left: 0;
+      transition: var(--transition);
+    }
 
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
-            font-size: 1rem;
-        }
+    .hamburger span:nth-child(1) {
+      top: 0;
+    }
 
-        .swiper-pagination {
-            bottom: 0 !important;
-        }
+    .hamburger span:nth-child(2) {
+      top: 9px;
+    }
 
-        .swiper-pagination-bullet {
-            background: #E07726;
-            width: 8px;
-            height: 8px;
-            opacity: 0.5;
-        }
+    .hamburger span:nth-child(3) {
+      top: 18px;
+    }
 
-        .swiper-pagination-bullet-active {
-            background: #CC3300;
-            opacity: 1;
-        }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 9px;
+    }
 
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .team-member {
-                grid-template-columns: 1fr 1.2fr;
-            }
-        }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
 
-        /* Small Tablet */
-        @media (max-width: 768px) {
-            .team-member {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-                margin: 0 auto;
-                gap: 1.5rem;
-            }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 9px;
+    }
 
-            .member-image {
-                max-height: 300px;
-                width: min(100%, 350px);
-                margin: 0 auto;
-            }
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      padding: 100px 40px 40px;
+      transition: var(--transition);
+      z-index: 99;
+    }
 
-            .member-content {
-                text-align: center;
-            }
-        }
+    .mobile-menu.active {
+      right: 0;
+    }
 
-        /* Mobile */
-        @media (max-width: 480px) {
-            .team-section {
-                padding: 1.5rem 0;
-            }
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-            .member-image {
-                max-height: 250px;
-            }
+    .mobile-nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--black);
+      transition: var(--transition);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray);
+    }
 
-            .swiper-button-next,
-            .swiper-button-prev {
-                display: none;
-            }
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+      color: var(--primary);
+    }
 
-            .swiper {
-                padding-bottom: 2rem;
-            }
-        }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 98;
+    }
 
-        /* Small Mobile */
-        @media (max-width: 360px) {
-            .member-image {
-                max-height: 150px;
-            }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
 
-            .member-bio {
-                font-size: 0.85rem;
-            }
-        }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+    }
 
-        /* Landscape Mode */
-        @media (max-height: 400px) and (orientation: landscape) {
-            .team-section {
-                min-height: auto;
-                padding: 2rem 0;
-            }
+    /* Carousel Styles */
+    .carousel-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
 
-            .team-member {
-                grid-template-columns: 1fr 1.5fr;
-            }
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+    }
 
-            .member-image {
-                max-height: 200px;
-            }
-        }
-         .services-section {
-            background-color: #f8f9fa;
-            padding: 5rem 0;
-            margin-top: 14rem;
-        }
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+      transform: scale(1);
+      transition: opacity 0.8s ease, transform 8s ease;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+    .carousel-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+      z-index: 1;
+    }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
+    .carousel-navigation {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      display: flex;
+      gap: 15px;
+      z-index: 10;
+    }
 
-        .section-title {
-            color: #468008;
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
+    .carousel-nav-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--white);
+    }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -10px;
-            width: 80%;
-            height: 3px;
-            background: linear-gradient(to right, #E07726, #CC3300);
-            border-radius: 2px;
-        }
+    .carousel-nav-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
 
-        .section-subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 1.5rem auto 0;
-            line-height: 1.6;
-        }
+    .carousel-nav-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+    .carousel-indicators {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
 
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
+    .carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: var(--transition);
+    }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
+    .carousel-indicator.active {
+      background-color: var(--white);
+      transform: scale(1.2);
+    }
 
-        .service-image {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
+    /* Hero Content */
+    .hero-content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 40px;
+    }
 
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+    .hero-content {
+      position: relative;
+      top:120px;
+      z-index: 5;
+      color: var(--white);
+      max-width: 550px;
+      flex: 1;
+    }
 
-        .service-card:hover .service-image img {
-            transform: scale(1.05);
-        }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
 
-        .service-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
-        }
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+    }
 
-        .service-content {
-            padding: 1.5rem;
-        }
+    .hero-title span {
+      color: var(--primary);
+    }
 
-        .service-title {
-            background: linear-gradient(to right, #468008, #103D03);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    .hero-description {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+    }
 
-        .service-description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
+    .hero-content.active .hero-subtitle,
+    .hero-content.active .hero-title,
+    .hero-content.active .hero-description,
+    .hero-content.active .hero-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .service-features {
-            list-style: none;
-            border-top: 1px solid #eee;
-            margin-top: 1rem;
-            padding-top: 1rem;
-        }
+    .hero-cta {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    }
 
-        .service-features li {
-            color: #555;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            padding-left: 1rem;
-            position: relative;
-        }
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 500;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
 
-        .service-features li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: linear-gradient(to right, #E07726, #CC3300);
-        }
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border: none;
+    }
 
-        @media (max-width: 768px) {
-            .services-section {
-                padding: 3rem 0;
-            }
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
 
-            .service-image {
-                height: 180px;
-            }
-        }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
 
-        @media (max-width: 480px) {
-            .section-subtitle {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
+    .btn-outline:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
 
-            .service-image {
-                height: 160px;
-            }
-        }
-    </style>
+    /* Carousel Cards - Positioned closer to content */
+    .carousel-cards-wrapper {
+      position: relative;
+      width: 450px;
+      height: 400px;
+      z-index: 5;
+      overflow: visible;
+      margin-left: -40px; /* Moved closer to the content */
+    }
+
+    .carousel-cards {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-card {
+      position: absolute;
+      width: 220px;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform-origin: center;
+      top: 50px;
+    }
+
+    /* Card positions */
+    .carousel-card.active {
+      z-index: 10;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-card.next {
+      z-index: 5;
+      left: calc(100% - 60px);
+      transform: translateX(0);
+    }
+
+    .carousel-card.prev {
+      z-index: 1;
+      left: -100%;
+      opacity: 0;
+    }
+
+    .carousel-card.far {
+      z-index: 0;
+      left: calc(100% + 60px);
+      opacity: 0;
+    }
+
+    .carousel-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-card:hover .carousel-card-img {
+      transform: scale(1.05);
+    }
+
+    .carousel-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .carousel-card-title {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .carousel-card-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.8rem;
+    }
+
+    /* Media Queries */
+    @media (max-width: 1200px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .carousel-cards-wrapper {
+        width: 400px;
+      }
+
+      .carousel-card {
+        width: 200px;
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-content-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+      }
+
+      .carousel-cards-wrapper {
+        width: 100%;
+        height: 320px;
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      .carousel-card {
+        width: 180px;
+        height: 250px;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .carousel-navigation {
+        bottom: 30px;
+        right: 30px;
+      }
+
+      .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .carousel-cards-wrapper {
+        height: 300px;
+      }
+
+      .carousel-card {
+        width: 160px;
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .logo-text span {
+        font-size: 0.7rem;
+      }
+
+      .logo-img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .carousel-cards-wrapper {
+        height: 280px;
+      }
+
+      .carousel-card {
+        width: 140px;
+        height: 200px;
+      }
+
+      .carousel-navigation {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <a href="/" class="nav-logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/full_color_logo-8RuzmK0aZI1rqKpVDHv6k2q1lmWGav.png" alt="SunRise Cooperative Logo" class="logo-img">
-            </a>
-            
-            <div class="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="video-background">
-                <video autoplay loop muted playsinline poster="images (94).jpeg">
-                    <source src="stock-footage-portrait-of-beautiful-woman-farmer-giving-ok-sign-when-inspecting-vegetables.webm" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-overlay"></div>
-            </div>
-            <div class="hero-content">
-                <h1 class="hero-title">What We <span>Plant</span><br>We Become</h1>
-                <p class="hero-subtitle">Cultivating sustainable futures through innovative agricultural practices</p>
-                <div class="hero-cta-group">
-                    <a href="#learn-more" class="cta-button primary">Learn More</a>
-                    <a href="#contact" class="cta-button secondary">Contact Us</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="who-we-are">
+  <!-- Header & Navigation -->
+  <header class="header">
     <div class="container">
-        <h2>Who Are We?</h2>
-        <p>At SunRise Multipurpose Cooperative Society Ltd., we envision a future where economic prosperity and 
-        natural wellness go hand in hand. By harnessing the power of cooperative collaboration, we aim to 
-        uplift communities, empower farmers, and create sustainable opportunities for our members in Akwa 
-        Ibom and across the diaspora.</p>
-        <p>Our commitment extends beyond financial growth—we strive to promote the richness of organic, 
-        health-enhancing substances, ensuring that their medicinal and nutritional benefits reach people worldwide.</p>
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/full_color_icon-HJ2uMbwQUIgoqZgtvCdCYqiyb6e8rK.png" alt="SunRise Logo" class="logo-img">
+          <div class="logo-text">
+            SunRise
+            <span>Cooperative Multipurpose Society</span>
+          </div>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-link active">Home</a></li>
+          <li><a href="#" class="nav-link">About Us</a></li>
+          <li><a href="#" class="nav-link">Investments</a></li>
+          <li><a href="#" class="nav-link">Services</a></li>
+          <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
     </div>
-    <div class="decorative-logo decorative-logo-right"></div>
-</section>
-<section class="vision-mission-services">
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-nav">
+      <li><a href="#" class="mobile-nav-link active">Home</a></li>
+      <li><a href="#" class="mobile-nav-link">About Us</a></li>
+      <li><a href="#" class="mobile-nav-link">Investments</a></li>
+      <li><a href="#" class="mobile-nav-link">Services</a></li>
+      <li><a href="#" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+      <div class="carousel-slide active" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/067c59c5070a50-residential-land-residential-land-for-sale-gwagwalada-abuja-XpEHqJ81MhhQBNCKoeMo6Vg3gIFHeR.jpeg')"></div>
+      <div class="carousel-slide" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2896%29-C97m97wluIR34Mh4lDeFQ8JF6ebDYS.jpeg')"></div>
+      <div class="carousel-slide" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2895%29-tuttjsle1wS1d5iwjrhWwsnfH5u0nd.jpeg')"></div>
+      <div class="carousel-slide" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2897%29-QvdCKKM9MrhPHooyrOdMqDA20ig0dM.jpeg')"></div>
+    </div>
+    
     <div class="container">
-        <div class="grid">
-            <div class="card">
-                <div class="icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                </div>
-                <h3>Our Vision</h3>
-                <p>To cultivate a sustainable future where agricultural prosperity and environmental stewardship thrive in harmony.</p>
-            </div>
-            <div class="card">
-                <div class="icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-                <h3>Our Mission</h3>
-                <p>To empower communities through sustainable agriculture, innovative financial solutions, and eco-friendly practices.</p>
-            </div>
-            <div class="card">
-                <div class="icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                            d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                            d="M12 19.5C7 15.5 4 12.5 4 9.5 4 6.5 6.5 4 9.5 4c1.5 0 2.9.6 4 1.5 1.1-.9 2.5-1.5 4-1.5 3 0 5.5 2.5 5.5 5.5 0 3-3 6-8 10z" />
-                    </svg>
-                </div>
-                <h3>Our Core Values</h3>
-                <p>Integrity, sustainability, and community empowerment guide our commitment to fostering growth and prosperity.</p>
-            </div>
+      <div class="hero-content-wrapper">
+        <!-- Hero Content -->
+        <div class="hero-content active">
+          <h3 class="hero-subtitle">Premium Opportunities</h3>
+          <h1 class="hero-title">Land <span>Investment</span></h1>
+          <p class="hero-description">Secure your future with strategic land acquisitions in high-growth areas. Our land investment opportunities offer secure documentation and excellent appreciation potential.</p>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary">Explore Opportunities</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
         </div>
+        
+        <!-- Carousel Cards -->
+        <div class="carousel-cards-wrapper">
+          <div class="carousel-cards">
+            <div class="carousel-card prev" data-index="3">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2897%29-QvdCKKM9MrhPHooyrOdMqDA20ig0dM.jpeg" alt="Grants for Businesses" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Grants for Businesses</h4>
+                <p class="carousel-card-subtitle">Business Support</p>
+              </div>
+            </div>
+            <div class="carousel-card active" data-index="0">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/067c59c5070a50-residential-land-residential-land-for-sale-gwagwalada-abuja-XpEHqJ81MhhQBNCKoeMo6Vg3gIFHeR.jpeg" alt="Land Investment" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Land Investment</h4>
+                <p class="carousel-card-subtitle">Strategic Locations</p>
+              </div>
+            </div>
+            <div class="carousel-card next" data-index="1">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2896%29-C97m97wluIR34Mh4lDeFQ8JF6ebDYS.jpeg" alt="Agriculture Investment" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Agriculture Investment</h4>
+                <p class="carousel-card-subtitle">Sustainable Farming</p>
+              </div>
+            </div>
+            <div class="carousel-card far" data-index="2">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%2895%29-tuttjsle1wS1d5iwjrhWwsnfH5u0nd.jpeg" alt="Real Estate Investment" class="carousel-card-img">
+              <div class="carousel-card-overlay">
+                <h4 class="carousel-card-title">Real Estate Investment</h4>
+                <p class="carousel-card-subtitle">Premium Properties</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
 
-    <section class="team-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Meet Our Leadership</h2>
-                <p class="subtitle">The visionaries behind SunRise Cooperative</p>
-            </div>
+    <!-- Carousel Navigation -->
+    <div class="carousel-navigation">
+      <div class="carousel-nav-btn prev">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </div>
+      <div class="carousel-nav-btn next">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </div>
+    </div>
 
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <!-- Founder -->
-                    <div class="swiper-slide">
-                        <div class="team-member">
-                            <div class="member-image">
-                                <img src="/placeholder.svg?height=300&width=300" alt="Founder">
-                            </div>
-                            <div class="member-content">
-                                <h3 class="member-name">John Doe</h3>
-                                <div class="member-role">Founder & CEO</div>
-                                <p class="member-bio">
-                                    A visionary leader with over 15 years of experience in cooperative management. 
-                                    Pioneered innovative financial solutions that have transformed communities and 
-                                    empowered thousands of members to achieve their financial goals.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+      <div class="carousel-indicator active" data-index="0"></div>
+      <div class="carousel-indicator" data-index="1"></div>
+      <div class="carousel-indicator" data-index="2"></div>
+      <div class="carousel-indicator" data-index="3"></div>
+    </div>
+  </section>
 
-                    <!-- Co-founder -->
-                    <div class="swiper-slide">
-                        <div class="team-member">
-                            <div class="member-image">
-                                <img src="/placeholder.svg?height=300&width=300" alt="Co-founder">
-                            </div>
-                            <div class="member-content">
-                                <h3 class="member-name">Jane Smith</h3>
-                                <div class="member-role">Co-founder & COO</div>
-                                <p class="member-bio">
-                                    A strategic thinker with expertise in operational excellence and member experience. 
-                                    Her leadership has been instrumental in scaling our services while maintaining 
-                                    the highest standards of member satisfaction.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Initiator -->
-                    <div class="swiper-slide">
-                        <div class="team-member">
-                            <div class="member-image">
-                                <img src="/placeholder.svg?height=300&width=300" alt="Project Initiator">
-                            </div>
-                            <div class="member-content">
-                                <h3 class="member-name">Michael Johnson</h3>
-                                <div class="member-role">Project Initiator</div>
-                                <p class="member-bio">
-                                    A community development expert who initiated the SunRise vision. 
-                                    His innovative approach to cooperative banking has created sustainable 
-                                    economic growth opportunities for our members.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">
-                    Empowering communities through innovative financial solutions and sustainable growth opportunities
-                </p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20(62)-jq0xX6QgWxaW7HekJKK54PsCmyLoSy.jpeg" alt="Financial Advisory Services">
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Financial Advisory</h3>
-                        <p class="service-description">
-                            Expert guidance on financial planning, investment strategies, and wealth management 
-                            tailored to your unique needs and goals.
-                        </p>
-                        <ul class="service-features">
-                            <li>Personalized Financial Planning</li>
-                            <li>Investment Consultation</li>
-                            <li>Risk Management</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://rztgg9jpu58dsvst.public.blob.vercel-storage.com/98db611e6bfe4d7e84a8f0ee1c8cbcfa-yBsw3UzhZrclQD6WMmz8eYiv74FY4X.png" alt="Business Growth Services">
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Business Growth</h3>
-                        <p class="service-description">
-                            Comprehensive support for business development, including funding solutions, 
-                            strategic planning, and market expansion strategies.
-                        </p>
-                        <ul class="service-features">
-                            <li>Business Loans</li>
-                            <li>Growth Strategy</li>
-                            <li>Market Analysis</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20(63)-VHjGhH70Tr2I2VOev5ZJRottiuhIra.jpeg" alt="Sustainable Development">
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Sustainable Development</h3>
-                        <p class="service-description">
-                            Promoting eco-friendly practices and sustainable development initiatives 
-                            that benefit both communities and the environment.
-                        </p>
-                        <ul class="service-features">
-                            <li>Green Projects</li>
-                            <li>Community Programs</li>
-                            <li>Environmental Impact</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    </main>
-
-<footer>
-        <div class="footer-container">
-            <div class="footer-section footer-logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/full_color_icon-6Aepv6dSP2kJDjKdlsrG8fbxhmHwDH.png" alt="Sunrise Cooperative Logo">
-                <p>Empowering communities through cooperative growth and sustainable development.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Services</a></li>
-
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Savings Plans</a></li>
-                    <li><a href="#">Loan Services</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <ul class="footer-links contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Cooperative St, Lagos</li>
-                    <li><i class="fas fa-phone"></i> (234) 123-4567</li>
-                    <li><i class="fas fa-envelope"></i> info@sunrise.coop</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 Sunrise Multipurpose Cooperative Society. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector(".header")
-  const navToggle = document.querySelector(".nav-toggle")
-  const navMenu = document.querySelector(".nav-menu")
-  const navLinks = document.querySelectorAll(".nav-links a")
-
-  // Header scroll effect
-  let lastScroll = 0
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      header.style.transform = "translateY(-100%)"
-    } else {
-      header.style.transform = "translateY(0)"
-    }
-
-    if (currentScroll > 50) {
-      header.style.backgroundColor = "rgba(255, 255, 255, 0.8)"
-    } else {
-      header.style.backgroundColor = "rgba(255, 255, 255, 0.6)"
-    }
-
-    lastScroll = currentScroll
-  })
-
-  // Mobile menu toggle
-  navToggle.addEventListener("click", () => {
-    navToggle.classList.toggle("active")
-    navMenu.classList.toggle("active")
-    document.body.classList.toggle("no-scroll")
-  })
-
-  // Close mobile menu when clicking links
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      navToggle.classList.remove("active")
-      navMenu.classList.remove("active")
-      document.body.classList.remove("no-scroll")
-    })
-  })
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault()
-      const target = document.querySelector(this.getAttribute("href"))
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        })
+  <script>
+    // DOM Elements
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.overlay');
+    const header = document.querySelector('.header');
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselCards = document.querySelectorAll('.carousel-card');
+    const carouselIndicators = document.querySelectorAll('.carousel-indicator');
+    const prevButton = document.querySelector('.carousel-nav-btn.prev');
+    const nextButton = document.querySelector('.carousel-nav-btn.next');
+    const heroContent = document.querySelector('.hero-content');
+    const carouselCardsWrapper = document.querySelector('.carousel-cards-wrapper');
+    
+    // Content for each slide
+    const slideContents = [
+      {
+        subtitle: "Premium Opportunities",
+        title: "Land <span>Investment</span>",
+        description: "Secure your future with strategic land acquisitions in high-growth areas. Our land investment opportunities offer secure documentation and excellent appreciation potential."
+      },
+      {
+        subtitle: "Sustainable Returns",
+        title: "Agriculture <span>Investment</span>",
+        description: "Invest in modern farming and livestock projects with sustainable yields. Our agricultural investments provide regular dividend payments and contribute to food security."
+      },
+      {
+        subtitle: "Premium Properties",
+        title: "Real Estate <span>Investment</span>",
+        description: "Discover premium residential and commercial properties in prime locations. Our real estate investments offer rental income and significant capital appreciation."
+      },
+      {
+        subtitle: "Business Growth",
+        title: "Grants for <span>Businesses</span>",
+        description: "Support entrepreneurship and innovation with our business grant programs. We provide funding, mentorship, and resources to help businesses thrive and scale."
       }
-    })
-  })
-})
-
-new Swiper('.swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            speed: 800,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            }
+    ];
+    
+    // Current slide index
+    let currentIndex = 0;
+    let isAnimating = false;
+    let startX, moveX;
+    let isDragging = false;
+    
+    // Initialize
+    function init() {
+      setupEventListeners();
+      setupAutoRotation();
+    }
+    
+    // Auto rotation
+    function setupAutoRotation() {
+      setInterval(() => {
+        if (!isDragging && !isAnimating) {
+          goToNextSlide();
+        }
+      }, 5000);
+    }
+    
+    // Setup Event Listeners
+    function setupEventListeners() {
+      // Toggle Mobile Menu
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      // Close mobile menu when clicking overlay
+      overlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Scroll event for header
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Carousel Navigation
+      prevButton.addEventListener('click', goToPrevSlide);
+      nextButton.addEventListener('click', goToNextSlide);
+      
+      // Carousel Cards Click
+      carouselCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const index = parseInt(card.dataset.index);
+          if (index !== currentIndex && !isAnimating) {
+            goToSlide(index);
+          }
         });
-    </script>
+      });
+      
+      // Carousel Indicators Click
+      carouselIndicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+          const index = parseInt(indicator.dataset.index);
+          if (index !== currentIndex && !isAnimating) {
+            goToSlide(index);
+          }
+        });
+      });
+      
+      // Mobile nav links
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      // Touch/swipe functionality for carousel
+      carouselCardsWrapper.addEventListener('mousedown', dragStart);
+      carouselCardsWrapper.addEventListener('touchstart', dragStart, { passive: false });
+      
+      carouselCardsWrapper.addEventListener('mousemove', dragMove);
+      carouselCardsWrapper.addEventListener('touchmove', dragMove, { passive: false });
+      
+      carouselCardsWrapper.addEventListener('mouseup', dragEnd);
+      carouselCardsWrapper.addEventListener('touchend', dragEnd);
+      
+      carouselCardsWrapper.addEventListener('mouseleave', dragEnd);
+    }
+    
+    // Drag Start
+    function dragStart(e) {
+      if (isAnimating) return;
+      
+      isDragging = true;
+      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+      carouselCardsWrapper.style.cursor = 'grabbing';
+      
+      // Prevent default behavior for touch events to avoid page scrolling
+      if (e.type === 'touchstart') {
+        e.preventDefault();
+      }
+    }
+    
+    // Drag Move
+    function dragMove(e) {
+      if (!isDragging) return;
+      
+      // Prevent default to avoid page scrolling when dragging
+      e.preventDefault();
+      
+      moveX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    }
+    
+    // Drag End
+    function dragEnd(e) {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      carouselCardsWrapper.style.cursor = '';
+      
+      const diffX = (moveX || startX) - startX;
+      
+      // Determine if we should navigate
+      if (Math.abs(diffX) > 30) {
+        if (diffX > 0) {
+          goToPrevSlide();
+        } else {
+          goToNextSlide();
+        }
+      }
+    }
+    
+    // Go to Previous Slide
+    function goToPrevSlide() {
+      if (isAnimating) return;
+      const newIndex = (currentIndex - 1 + carouselSlides.length) % carouselSlides.length;
+      goToSlide(newIndex);
+    }
+    
+    // Go to Next Slide
+    function goToNextSlide() {
+      if (isAnimating) return;
+      const newIndex = (currentIndex + 1) % carouselSlides.length;
+      goToSlide(newIndex);
+    }
+    
+    // Go to Specific Slide
+    function goToSlide(index) {
+      if (isAnimating || index === currentIndex) return;
+      
+      isAnimating = true;
+      
+      // Update slides
+      carouselSlides[currentIndex].classList.remove('active');
+      carouselSlides[index].classList.add('active');
+      
+      // Update indicators
+      carouselIndicators[currentIndex].classList.remove('active');
+      carouselIndicators[index].classList.add('active');
+      
+      // Update carousel cards
+      updateCarouselCards(index);
+      
+      // Update content
+      updateContent(index);
+      
+      // Update current index
+      currentIndex = index;
+      
+      // Reset animation flag after transition
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    }
+    
+    // Update Carousel Cards
+    function updateCarouselCards(activeIndex) {
+      const totalCards = carouselSlides.length;
+      
+      carouselCards.forEach(card => {
+        // Remove all classes first
+        card.classList.remove('active', 'next', 'prev', 'far');
+        
+        const cardIndex = parseInt(card.dataset.index);
+        
+        // Calculate position relative to active card
+        if (cardIndex === activeIndex) {
+          card.classList.add('active');
+        } else if (cardIndex === (activeIndex + 1) % totalCards) {
+          card.classList.add('next');
+        } else if (cardIndex === (activeIndex - 1 + totalCards) % totalCards) {
+          card.classList.add('prev');
+        } else {
+          card.classList.add('far');
+        }
+      });
+    }
+    
+    // Update Content
+    function updateContent(index) {
+      // Remove active class to trigger animation
+      heroContent.classList.remove('active');
+      
+      // Update content after a short delay
+      setTimeout(() => {
+        document.querySelector('.hero-subtitle').textContent = slideContents[index].subtitle;
+        document.querySelector('.hero-title').innerHTML = slideContents[index].title;
+        document.querySelector('.hero-description').textContent = slideContents[index].description;
+        
+        // Add active class back to trigger animation
+        heroContent.classList.add('active');
+      }, 300);
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
 </body>
 </html>
-
