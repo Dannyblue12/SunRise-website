@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +70,19 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Header Styles - Improved for Mobile */
         .header {
             position: fixed;
             top: 0;
@@ -304,9 +317,9 @@
             width: 100%;
             height: 100%;
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            text-align: left;
+            align-items: center; /* Vertically center content */
+            justify-content: flex-start; /* Align content to the left by default */
+            text-align: left; /* Default text align */
             overflow: hidden;
         }
         
@@ -324,25 +337,29 @@
             transform: scale(1.1);
         }
 
-        .hero-slide::before {
+        .hero-slide::before { /* Dark overlay */
             content: '';
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 2;
+            background: rgba(0, 0, 0, 0.45); /* Slightly increased darkness */
+            z-index: 2; /* Above image, below content */
         }
         
         .hero-content {
             position: relative;
-            z-index: 3;
+            z-index: 3; /* Above overlay */
             color: white;
-            padding: 20px 40px;
-            max-width: 600px;
+            padding: 20px 40px; /* More padding for desktop */
+            max-width: 600px; /* Max width for content on desktop */
+        }
+
+        .hero-subtitle { /* Removed, as per new design focusing on title, desc, CTAs */
+            display: none; 
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Base font size */
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 15px;
@@ -353,34 +370,34 @@
         .hero-description {
             font-size: 1rem;
             margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.95);
+            color: rgba(255, 255, 255, 0.95); /* Slightly brighter text */
             line-height: 1.7;
-            max-width: 500px;
+            max-width: 500px; /* Limit description width on desktop */
         }
 
         .hero-cta {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Allow wrapping on very small screens */
             gap: 15px;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Align CTAs to the left on desktop */
         }
         
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 12px 28px; /* Slightly more padding */
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 600; /* Bolder text */
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
             font-size: 0.95rem;
-            border: 2px solid transparent;
+            border: 2px solid transparent; /* Base for outline button */
         }
 
-        .btn-gradient {
+        .btn-gradient { /* For "Learn More" */
             background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
             color: white;
-            border-color: var(--color-secondary);
+            border-color: var(--color-secondary); /* For consistency */
         }
         .btn-gradient:hover {
             background: linear-gradient(to right, var(--color-secondary-dark), var(--color-secondary));
@@ -388,18 +405,19 @@
             box-shadow: 0 6px 12px rgba(224, 119, 38, 0.3);
         }
 
-        .btn-outline-brand {
+        .btn-outline-brand { /* For "Contact Us" */
             background: transparent;
             color: white;
             border-color: white; 
         }
         .btn-outline-brand:hover {
             background-color: white;
-            color: var(--color-secondary-dark);
+            color: var(--color-secondary-dark); /* Orange text on hover */
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
         }
         
+        /* Hero Swiper Pagination (Arrows removed via JS) */
         .hero .swiper-pagination-bullet {
             background: rgba(255,255,255,0.7);
             width: 10px; height: 10px; opacity: 1;
@@ -409,12 +427,13 @@
             transform: scale(1.2);
         }
         .hero .swiper-button-next, .hero .swiper-button-prev {
-            display: none !important;
+            display: none !important; /* Hide arrows as requested */
         }
 
+        /* Responsive Hero Content */
         @media (max-width: 767px) {
             .hero-slide {
-                justify-content: center;
+                justify-content: center; /* Center content on mobile */
                 text-align: center;
             }
             .hero-content {
@@ -422,14 +441,14 @@
                 max-width: 90%;
             }
             .hero-title {
-                font-size: 2rem;
+                font-size: 2rem; /* Adjusted for mobile */
             }
             .hero-description {
-                font-size: 0.9rem;
-                max-width: 100%;
+                font-size: 0.9rem; /* Adjusted for mobile */
+                max-width: 100%; /* Allow full width on mobile */
             }
             .hero-cta {
-                justify-content: center;
+                justify-content: center; /* Center CTAs on mobile */
             }
              .btn {
                 padding: 10px 20px;
@@ -572,6 +591,7 @@
             color: white;
         }
 
+        /* Increased size for Vision, Mission, Core Values */
         .service-title {
             font-size: 32px;
             color: var(--color-dark);
@@ -601,7 +621,7 @@
         /* Acquisitions Section */
         .acquisitions {
             padding: 60px 0;
-            background-color: #fff; /* Removed green background opacity */
+            background-color: rgba(70, 128, 8, 0.15);
             position: relative;
             overflow: hidden;
         }
@@ -654,7 +674,7 @@
             background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
@@ -705,10 +725,10 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             border-radius: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         @media (min-width: 768px) {
@@ -804,123 +824,171 @@
             transform: scale(1.2);
         }
 
-        /* National Housing Section */
-        .national-housing {
-            padding: 50px 0 40px; /* Moderate height */
+        /* Investment Section */
+        .investment {
+            padding: 60px 0;
+            background-color: #f9f9f9;
             position: relative;
             overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            background-color: #0c2b05; /* Fallback */
         }
-        
-        .national-housing-overlay {
+
+        .investment-leaf-1 {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(16, 61, 3, 0.85); /* Reduced opacity slightly from 0.9 */
-            z-index: 1;
-        }
-        
-        .national-housing-content {
-            position: relative;
-            z-index: 2;
-            color: white;
+            left: -100px;
+            top: 20%;
+            width: 300px;
+            height: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            transform: rotate(-15deg);
+            pointer-events: none;
         }
 
-        /* Override section title color for this dark section to match Team section behavior */
-        .national-housing .section-title h2 {
-            color: white;
-            background: none;
-            -webkit-text-fill-color: white;
-        }
-        
-        .nh-text-content {
-            max-width: 900px;
-            margin: 0 auto 30px;
-            text-align: center;
-        }
-
-        .nh-paragraph {
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        .nh-highlight-text {
-            font-weight: 600;
-            color: #ffd700;
+        .investment-leaf-2 {
+            position: absolute;
+            right: -100px;
+            bottom: 10%;
+            width: 300px;
+            height: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            transform: rotate(30deg);
+            pointer-events: none;
         }
 
-        /* New Card Styles for National Housing */
-        .swiper-housing {
-            width: 100%;
-            padding: 20px 0 30px;
+        .investment-leaf-3 {
+            position: absolute;
+            right: 20%;
+            top: 15%;
+            width: 200px;
+            height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            transform: rotate(45deg);
+            pointer-events: none;
         }
-        
-        .housing-card {
-            position: relative;
-            border-radius: 15px;
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .investment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .investment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .investment-card {
+            background-color: white;
+            border-radius: 20px;
             overflow: hidden;
-            aspect-ratio: 3/4; /* Nice portrait aspect ratio */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .housing-card:hover {
-            transform: translateY(-5px);
+        .investment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .housing-card img {
+        .investment-image {
+            position: relative;
+            height: 180px;
+        }
+
+        .investment-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures full image view */
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .housing-card:hover img {
+        .investment-card:hover .investment-image img {
             transform: scale(1.05);
         }
 
-        .housing-card-overlay {
+        .investment-badge {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 15px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
             color: white;
-            text-align: center;
-        }
-
-        .housing-card-title {
-            font-size: 18px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .nh-cta-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .swiper-housing .swiper-button-next,
-        .swiper-housing .swiper-button-prev {
+        .investment-header {
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(70, 128, 8, 0.9), rgba(16, 61, 3, 0.9));
             color: white;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
         }
 
-        .swiper-housing .swiper-button-next:after,
-        .swiper-housing .swiper-button-prev:after {
-            font-size: 18px;
+        .investment-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .investment-subtitle {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .investment-price {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .investment-price span {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .investment-content {
+            padding: 15px;
+        }
+
+        .investment-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .investment-features {
+            margin-bottom: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .feature-dot {
+            width: 5px;
+            height: 5px;
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            margin-right: 8px;
         }
 
         /* Team Section */
@@ -930,12 +998,14 @@
             color: white;
         }
 
+        /* Team section title with white text */
         .team .section-title h2 {
             color: white;
             background: none;
             -webkit-text-fill-color: white;
         }
 
+        /* For the "Meet Our Leadership" text color */
         .team-subtitle {
             text-align: center;
             color: #ffffff;
@@ -1078,6 +1148,7 @@
             gap: 10px;
         }
 
+        /* Fixed team pagination bullets */
         .team-pagination-bullet {
             width: 10px;
             height: 10px;
@@ -1511,6 +1582,23 @@
                 display: none;
             }
 
+            .carousel-cards {
+                height: 350px;
+            }
+
+            .carousel-card {
+                width: 200px;
+                height: 270px;
+            }
+
+            .carousel-card-title {
+                font-size: 18px;
+            }
+
+            .carousel-card-subtitle {
+                font-size: 14px;
+            }
+
             .section-title h2 {
                 font-size: 32px;
             }
@@ -1535,6 +1623,18 @@
                 font-size: 14px;
             }
 
+            .investment-title {
+                font-size: 20px;
+            }
+
+            .investment-description {
+                font-size: 15px;
+            }
+
+            .feature-item {
+                font-size: 14px;
+            }
+
             .team-name {
                 font-size: 22px;
             }
@@ -1555,37 +1655,59 @@
                 font-size: 24px;
             }
         }
-
-        .btn-primary-mt-4 {
-            display: inline-block;
-            padding: 7px 11px;
+.btn-primary-mt-4{
+  display: inline-block;
+            padding: 7px 11px; /* Slightly more padding */
             border-radius: 50px;
+            ; /* Bolder text */
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
             font-size: 0.95rem;
-            border: 2px solid transparent;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
+            border: 2px solid transparent; /* Base for outline button */
+  background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
             color: white;
-            border-color: var(--color-secondary);
-        }
-
+            border-color: var(--color-secondary); /* For consistency */
+}
         /* Utility Classes */
         .text-center {
             text-align: center;
         }
-        .mb-2 { margin-bottom: 8px; }
-        .mb-4 { margin-bottom: 16px; }
-        .mb-6 { margin-bottom: 24px; }
-        .mt-4 { margin-top: 16px; }
-        .mt-6 { margin-top: 24px; }
-        .hidden { display: none; }
-        .hidden-mobile { display: block; }
-        .hidden-desktop { display: none; }
+
+        .mb-2 {
+            margin-bottom: 8px;
+        }
+
+        .mb-4 {
+            margin-bottom: 16px;
+        }
+
+        .mb-6 {
+            margin-bottom: 24px;
+        }
+
+        .mt-4 {
+            margin-top: 16px;
+        }
+
+        .mt-6 {
+            margin-top: 24px;
+        }
+
+        .hidden {
+            display: none;
+        }
 
         @media (max-width: 767px) {
-            .hidden-mobile { display: none; }
-            .hidden-desktop { display: block; }
+            .hidden-mobile {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hidden-desktop {
+                display: none;
+            }
         }
 
         /* Animation classes */
@@ -1598,15 +1720,246 @@
             opacity: 1;
         }
 
-        [data-aos="fade-up"] { transform: translateY(30px); }
-        [data-aos="fade-up"].aos-animate { transform: translateY(0); }
-        [data-aos="fade-right"] { transform: translateX(-30px); }
-        [data-aos="fade-right"].aos-animate { transform: translateX(0); }
-        [data-aos="fade-left"] { transform: translateX(30px); }
-        [data-aos="fade-left"].aos-animate { transform: translateX(0); }
-        [data-aos="zoom-in"] { transform: scale(0.9); }
-        [data-aos="zoom-in"].aos-animate { transform: scale(1); }
+        [data-aos="fade-up"] {
+            transform: translateY(30px);
+        }
 
+        [data-aos="fade-up"].aos-animate {
+            transform: translateY(0);
+        }
+
+        [data-aos="fade-right"] {
+            transform: translateX(-30px);
+        }
+
+        [data-aos="fade-right"].aos-animate {
+            transform: translateX(0);
+        }
+
+        [data-aos="fade-left"] {
+            transform: translateX(30px);
+        }
+
+        [data-aos="fade-left"].aos-animate {
+            transform: translateX(0);
+        }
+
+        [data-aos="zoom-in"] {
+            transform: scale(0.9);
+        }
+
+        [data-aos="zoom-in"].aos-animate {
+            transform: scale(1);
+        }
+
+        /* Additional Responsive Styles */
+        /* Enhanced responsive design */
+        /* Add these additional responsive styles to improve cross-device compatibility */
+
+        /* General responsive improvements */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .section-title h2 {
+                font-size: 34px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .service-title {
+                font-size: 28px;
+            }
+            
+            .acquisition-title {
+                font-size: 28px;
+            }
+            
+            .acquisition-description {
+                font-size: 16px;
+            }
+            
+            .team-card {
+                grid-template-columns: 180px 1fr;
+            }
+        }
+
+        /* Tablet specific improvements */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .services-grid {
+                gap: 20px;
+            }
+            
+            .service-card {
+                padding: 25px;
+            }
+            
+            .service-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .investment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile specific improvements */
+        @media (max-width: 767px) {
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .hero-content {
+                padding: 0 10px;
+            }
+            
+            .hero-title {
+                font-size: 30px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .service-card {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+            
+            .service-title {
+                font-size: 26px;
+            }
+            
+            .service-description {
+                font-size: 18px;
+            }
+            
+            .acquisition-title {
+                font-size: 24px;
+            }
+            
+            .acquisition-description {
+                font-size: 16px;
+            }
+            
+            .highlight-text {
+                font-size: 15px;
+            }
+            
+            .team-card {
+                padding: 20px;
+            }
+            
+            .team-name {
+                font-size: 22px;
+            }
+            
+            .team-bio {
+                font-size: 15px;
+            }
+            
+            .contact-grid {
+                gap: 30px;
+            }
+            
+            .contact-info, .contact-form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Small mobile improvements */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 26px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .carousel-card {
+                width: 180px;
+                height: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .service-title {
+                font-size: 24px;
+            }
+            
+            .acquisition-title {
+                font-size: 22px;
+            }
+            
+            .team-image {
+                max-width: 180px;
+            }
+            
+            .contact-info-title {
+                font-size: 22px;
+            }
+            
+            .contact-form-title {
+                font-size: 22px;
+            }
+        }
+
+        /* Fix for team slider on mobile */
+        @media (max-width: 767px) {
+            .team-slides {
+                flex-wrap: nowrap;
+            }
+            
+            .team-slide {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            
+            .team-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .team-image {
+                margin: 0 auto 20px;
+            }
+            
+            .team-content {
+                text-align: center;
+            }
+        }
+
+        /* Fix for swiper on mobile */
+        @media (max-width: 767px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .swiper-button-next:after,
+            .swiper-button-prev:after {
+                font-size: 14px;
+            }
+            
+            .acquisition-grid {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1621,7 +1974,7 @@
                 <ul class="nav-menu">
                     <li><a href="#hero" class="nav-link active">Home</a></li>
                     <li><a href="about-page.html" class="nav-link">About Us</a></li>
-                    <li><a href="land-investment.html" class="nav-link">Home Ownership Programme</a></li>
+                    <li><a href="land-investment.html" class="nav-link">Real Estate Investment</a></li>
                     <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
                 </ul>
             </nav>
@@ -1640,7 +1993,7 @@
                 <li><a href="land-investment.html" class="mobile-nav-link">                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-nav-icon">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>Home Ownership Programme</a></li>
+                        </svg>Real Estate Investment</a></li>
                 <li><a href="contact.html" class="mobile-nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-nav-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Contact Us</a></li>
             </ul>
         </nav>
@@ -1700,7 +2053,7 @@
                     <h2>Who Are We?</h2>
                 </div>
                 <div class="about-content" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <p>At <strong>Sunrise Multipurpose Cooperative Society Ltd.</strong>, we envision a future where economic prosperity and natural wellness go hand in hand. By harnessing the power of cooperative collaboration, we aim to uplift communities, empower farmers, and create sustainable opportunities for our members in Akwa Ibom and across the diaspora.</p>
+                    <p>At Sunrise Multipurpose Cooperative Society Ltd., we envision a future where economic prosperity and natural wellness go hand in hand. By harnessing the power of cooperative collaboration, we aim to uplift communities, empower farmers, and create sustainable opportunities for our members in Akwa Ibom and across the diaspora.</p>
                     <p>Our commitment extends beyond financial growth—we strive to promote the richness of organic, health-enhancing substances, ensuring that their medicinal and nutritional benefits reach people worldwide.</p>
                 </div>
             </div>
@@ -1745,96 +2098,11 @@
             </div>
         </section>
 
-        <!-- National Housing & Home Ownership Programme (Moved up) -->
-        <section id="invest" class="national-housing" style="background-image: url('https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.30.23%20AM.jpeg');">
-            <div class="national-housing-overlay"></div>
-            
-            <div class="container national-housing-content">
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-                    <h2>National Housing & Home Ownership Programme</h2>
-                </div>
-                
-                <div class="nh-text-content" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <p class="nh-paragraph">
-                        SunRise Cooperative Society Ltd, the only <span class="nh-highlight-text">FMBN-certified Cooperative in Akwa Ibom State</span> is leading the mission to help workers and income earners own affordable homes through the National Housing Scheme (NHS).
-                    </p>
-                    <p class="nh-paragraph">
-                        This programme is backed by the Nigerian Constitution (Act No. 2 of 1992 and Act No. 3 of 1992), which guarantees every Nigerian’s right to home ownership and available for the following people:
-                    </p>
-                </div>
-                
-                <!-- Swiper for National Housing Scheme Categories -->
-                <div class="swiper swiper-housing" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
-                    <div class="swiper-wrapper">
-                        
-                        <!-- Card 1: Civil Servant -->
-                        <div class="swiper-slide">
-                            <div class="housing-card">
-                                <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.30.55%20AM.jpeg" alt="Civil Servant">
-                                <div class="housing-card-overlay">
-                                    <div class="housing-card-title">Civil Servant</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Card 2: Artisans & Skilled Workers -->
-                        <div class="swiper-slide">
-                            <div class="housing-card">
-                                <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.31.13%20AM.jpeg" alt="Artisans & Skilled Workers">
-                                <div class="housing-card-overlay">
-                                    <div class="housing-card-title">Artisans & Skilled Workers</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: Small Business Owners -->
-                        <div class="swiper-slide">
-                            <div class="housing-card">
-                                <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.33.18%20AM.jpeg" alt="Small Business Owners">
-                                <div class="housing-card-overlay">
-                                    <div class="housing-card-title">Small Business Owners</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4: Farmers -->
-                        <div class="swiper-slide">
-                            <div class="housing-card">
-                                <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.33.37%20AM.jpeg" alt="Farmers">
-                                <div class="housing-card-overlay">
-                                    <div class="housing-card-title">Farmers</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Card 5: Private Sector Workers -->
-                        <div class="swiper-slide">
-                            <div class="housing-card">
-                                <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.32.19%20AM.jpeg" alt="Private Sector Workers">
-                                <div class="housing-card-overlay">
-                                    <div class="housing-card-title">Private Sector Workers</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    
-                    <!-- Add Navigation Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-                
-                <div class="nh-cta-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <a href="land-investment.html" class="btn btn-gradient">Learn More</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recent Acquisitions Section (Moved Down) -->
+        <!-- Recent Acquisitions Section -->
         <section id="acquisitions" class="acquisitions">
-            <!-- Background leaves removed from here or kept for subtle styling, but opacity background removed -->
             <div class="acquisitions-leaf-1" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png')"></div>
             <div class="acquisitions-leaf-2" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png')"></div>
+            <div class="acquisitions-leaf-3" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png')"></div>
             
             <div class="container">
                 <div class="section-title" data-aos="fade-up" data-aos-duration="800">
@@ -1884,6 +2152,10 @@
                                                 <strong>Government Approved</strong> designs and documentation
                                             </div>
                                         </div>
+                                        <div class="highlight-item">
+                                        
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1916,6 +2188,9 @@
                                             </div>
                                         </div>
                                         <div class="highlight-item">
+
+                                        </div>
+                                        <div class="highlight-item">
                                             <div class="highlight-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                     <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
@@ -1938,6 +2213,151 @@
                     
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Opportunities Section -->
+        <section id="invest" class="investment">
+            <div class="investment-leaf-1" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png')"></div>
+            <div class="investment-leaf-2" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png')"></div>
+            <div class="investment-leaf-3" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png')"></div>
+            
+            <div class="container">
+                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
+                    <h2>Investment Opportunities</h2>
+                </div>
+                <p class="text-center mb-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Secure your future with our diverse range of investment options</p>
+
+                <div class="investment-grid">
+                    <!-- Investment Card 1 -->
+                    <div class="investment-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        <div class="investment-image">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Access%20Road.png-Y2NbjrtnLqqBi4JjzlSqOlBzAAPqvZ.jpeg" alt="Diasporas Estate">
+                            <div class="investment-badge">Premium</div>
+                        </div>
+                        <div class="investment-header">
+                            <h3 class="investment-title">Diasporas Estate Plot</h3>
+                            <p class="investment-subtitle">Premium Location</p>
+                            <div class="investment-price">
+                                $5,000 <span>deposit</span>
+                            </div>
+                        </div>
+                        <div class="investment-content">
+                            <p class="investment-description">
+                                Secure your plot in our prestigious Diasporas Estate development next to Ibom Hotels. Perfect for diaspora investors looking for a high-quality home in a prime location.
+                            </p>
+                            <div class="investment-features">
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    500 square meter plot size
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Premium location next to Ibom Hotels
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Complete legal documentation
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    High appreciation potential
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Flexible payment options
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn-primary-mt-4">Express Interest</a>
+                        </div>
+                    </div>
+
+                    <!-- Investment Card 2 -->
+                    <div class="investment-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+                        <div class="investment-image">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Aerial%20View.png-TpPGAZkallAaKAZHrRmJTTdR7eL5RU.jpeg" alt="Mbiokporo Bungalow">
+                            <div class="investment-badge">Affordable</div>
+                        </div>
+                        <div class="investment-header">
+                            <h3 class="investment-title">Mbiokporo Bungalow</h3>
+                            <p class="investment-subtitle">Affordable Housing</p>
+                            <div class="investment-price">
+                                Contact <span>for pricing</span>
+                            </div>
+                        </div>
+                        <div class="investment-content">
+                            <p class="investment-description">
+                                Own a semi-detached 2-bedroom bungalow in our Mbiokporo development in Uyo along Etinan Road. Designed for affordability without compromising on quality.
+                            </p>
+                            <div class="investment-features">
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    2-Bedroom semi-detached bungalow
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Approved designs and documentation
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Affordable payment plans
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    State Government approved
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Ready for immediate development
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn-primary-mt-4">Get Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Investment Card 3 -->
+                    <div class="investment-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <div class="investment-image">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20%28100%29-ap3FvZjDKA3PghFoVWki3beiNcwVA7.jpeg" alt="Custom Development">
+                            <div class="investment-badge">Custom</div>
+                        </div>
+                        <div class="investment-header">
+                            <h3 class="investment-title">Custom Development</h3>
+                            <p class="investment-subtitle">Tailored Solutions</p>
+                            <div class="investment-price">
+                                Custom <span>pricing</span>
+                            </div>
+                        </div>
+                        <div class="investment-content">
+                            <p class="investment-description">
+                                Work with our team to create a custom development solution tailored to your specific needs and budget. From land acquisition to construction, we handle it all.
+                            </p>
+                            <div class="investment-features">
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Personalized consultation
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Custom design options
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Project management services
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Quality construction
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-dot"></div>
+                                    Transparent process
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn-primary-mt-4">Schedule Consultation</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2143,6 +2563,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Email</h4>
+
                                     <p>sunrisecoop2018@gmail.com</p>
                                 </div>
                             </div>
@@ -2207,8 +2628,9 @@
                                 <label for="interest">I'm interested in</label>
                                 <select id="interest" name="interest">
                                     <option value="">Select an option</option>
-                                    <option value="national-housing">National Housing Scheme</option>
-                                    <option value="real-estate">General Real Estate</option>
+                                    <option value="diasporas">Diasporas Estate Plot</option>
+                                    <option value="mbiokporo">Mbiokporo Bungalow</option>
+                                    <option value="custom">Custom Development</option>
                                     <option value="other">Other</option>
                                 </select>
                             </div>
@@ -2289,14 +2711,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // Define slide contents
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS (Animate On Scroll)
             AOS.init({ duration: 800, easing: 'ease-in-out', once: true, mirror: false });
-            
-            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Mobile Menu Toggle
             const menuToggle = document.getElementById('menuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
             const overlay = document.getElementById('overlay');
@@ -2324,18 +2743,16 @@
             overlay.addEventListener('click', closeMobileMenu);
             document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMobileMenu));
             
-            // Header Scroll Effect
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
 
-            // Hero Swiper
             const heroSwiper = new Swiper('.hero-swiper-container', {
                 loop: true,
                 autoplay: { delay: 5000, disableOnInteraction: false },
                 effect: 'fade',
                 fadeEffect: { crossFade: true },
                 pagination: { el: '.swiper-pagination', clickable: true },
-                navigation: false,
+                navigation: false, // Arrows removed
                 on: {
                     slideChangeTransitionStart: function () {
                         this.slides.forEach(slide => {
@@ -2349,13 +2766,9 @@
                     }
                 }
             });
-            // Trigger initial scale
-            setTimeout(() => {
-                const initialActiveSlideImg = heroSwiper.slides[heroSwiper.activeIndex].querySelector('.hero-slide-image');
-                if(initialActiveSlideImg) initialActiveSlideImg.style.transform = 'scale(1.1)';
-            }, 100);
+            const initialActiveSlideImg = heroSwiper.slides[heroSwiper.activeIndex].querySelector('.hero-slide-image');
+            if(initialActiveSlideImg) initialActiveSlideImg.style.transform = 'scale(1.1)';
 
-            // Team Slider (Custom implementation)
             const teamSlidesContainer = document.getElementById('teamSlides');
             if (teamSlidesContainer) {
                 const teamPaginationBullets = document.querySelectorAll('.team-pagination-bullet');
@@ -2378,17 +2791,24 @@
 
             // FAQ Accordion
             const faqItems = document.querySelectorAll('.faq-item');
+            
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
+                
                 question.addEventListener('click', function() {
+                    // Close all other items
                     faqItems.forEach(otherItem => {
-                        if (otherItem !== item) otherItem.classList.remove('active');
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
                     });
+                    
+                    // Toggle current item
                     item.classList.toggle('active');
                 });
             });
 
-            // Acquisitions Swiper
+            // Initialize Swiper for Acquisitions
             const acquisitionsSwiper = new Swiper('.swiper-acquisitions', {
                 slidesPerView: 1,
                 spaceBetween: 30,
@@ -2406,64 +2826,42 @@
                     prevEl: '.swiper-button-prev',
                 },
             });
-            
-            // Housing / Investment Swiper
-            const housingSwiper = new Swiper('.swiper-housing', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                loop: true,
-                centeredSlides: false,
-                autoplay: {
-                    delay: 3000, // Slightly faster delay as requested "delaying a bit"
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    },
-                    1024: {
-                        slidesPerView: 4, // Shows more cards on large screens
-                        spaceBetween: 30,
-                    },
-                }
-            });
 
             // Contact Form Submission
             const contactForm = document.getElementById('contactForm');
-            if(contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(contactForm);
-                    const formDataObj = {};
-                    formData.forEach((value, key) => { formDataObj[key] = value; });
-                    console.log('Form submitted:', formDataObj);
-                    alert('Thank you for your message! We will get back to you soon.');
-                    contactForm.reset();
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const formDataObj = {};
+                formData.forEach((value, key) => {
+                    formDataObj[key] = value;
                 });
-            }
+                
+                // Here you would typically send the data to your server
+                console.log('Form submitted with data:', formDataObj);
+                
+                // Show success message (in a real implementation)
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
 
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
+                    
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
+                    
                     if (targetElement) {
                         const headerHeight = document.querySelector('.header').offsetHeight;
                         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
@@ -2471,6 +2869,11 @@
                     }
                 });
             });
+            
+            // Initialize the hero content with the first slide
+            heroSubtitle.textContent = slideContents[0].subtitle;
+            heroTitle.innerHTML = slideContents[0].title;
+            heroDescription.textContent = slideContents[0].description;
         });
     </script>
 </body>
