@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Land Acquisition & Investment - SunRise Multipurpose Cooperative Society</title>
+    <title>National Housing & Home Ownership Programme - SunRise Cooperative</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
@@ -12,19 +11,14 @@
             --color-primary: #468008;
             --color-primary-dark: #103d03;
             --color-primary-light: rgba(70, 128, 8, 0.1);
-            --color-primary-glass: rgba(70, 128, 8, 0.15);
             --color-secondary: #e07726;
             --color-secondary-dark: #cc3300;
-            --color-secondary-light: rgba(224, 119, 38, 0.1);
             --color-gray: #4d4d4d;
             --color-dark: #1a1a1a;
             --color-light: #ffffff;
-            --color-glass-bg: rgba(255, 255, 255, 0.15);
-            --color-glass-border: rgba(255, 255, 255, 0.2);
             --font-sans: "Poppins", sans-serif;
             --transition: all 0.3s ease;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+            --overlay-green: rgba(70, 128, 8, 0.85);
         }
 
         * {
@@ -33,9 +27,7 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-sans);
@@ -44,112 +36,31 @@
             line-height: 1.6;
             overflow-x: hidden;
             font-size: 16px;
-            width: 100%;
-            max-width: 100%;
-            position: relative;
         }
 
-        /* Leaf Background Elements */
-        .leaf-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .leaf {
-            position: absolute;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23468008' opacity='0.05'%3E%3Cpath d='M17.75 3.08L12.5 7.25L7.25 3.08L2 9.35l5.25 5.25l-5.25 5.25l5.25 6.27l5.25-4.17l5.25 4.17l5.25-6.27l-5.25-5.25l5.25-5.25L17.75 3.08z'%3E%3C/path%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            opacity: 0.1;
-        }
-
-        .leaf-1 {
-            top: 10%;
-            left: 5%;
-            width: 150px;
-            height: 150px;
-            transform: rotate(15deg);
-        }
-
-        .leaf-2 {
-            top: 40%;
-            right: 5%;
-            width: 200px;
-            height: 200px;
-            transform: rotate(-20deg);
-        }
-
-        .leaf-3 {
-            bottom: 10%;
-            left: 15%;
-            width: 120px;
-            height: 120px;
-            transform: rotate(45deg);
-        }
-
-        .leaf-4 {
-            bottom: 30%;
-            right: 10%;
-            width: 180px;
-            height: 180px;
-            transform: rotate(-10deg);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
 
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 2;
         }
 
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Header Styles */
+        /* --- Header & Navigation --- */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: auto;
+            top: 0; left: 0; right: 0;
             min-height: 70px;
-            z-index: 50;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .header.scrolled {
+            z-index: 1000;
             background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px -1px rgba(0, 0, 0, 0.1), 0 2px 10px -1px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px -1px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         .header-container {
@@ -158,1688 +69,651 @@
             align-items: center;
             height: 100%;
             padding: 10px 20px;
-            max-width: 100%;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            flex-shrink: 1;
-            overflow: hidden;
-        }
+        .logo { display: flex; align-items: center; }
+        .logo img { width: 40px; margin-right: 10px; }
+        .logo-text { font-weight: 600; color: var(--color-dark); font-size: 16px; line-height: 1.2; }
 
-        .logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            flex-shrink: 0;
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-link { 
+            color: var(--color-dark); font-weight: 500; font-size: 15px; 
+            transition: color 0.3s; position: relative; 
         }
-
-        .logo-text {
-            font-weight: 600;
-            color: var(--color-dark);
-            font-size: 16px;
-            white-space: normal;
-            line-height: 1.2;
-        }
-
-        @media (max-width: 767px) {
-            .logo-text {
-                max-width: 200px;
-                font-size: 14px;
-            }
-        }
-
-        .nav {
-            position: relative;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--color-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 16px;
-            position: relative;
-            padding: 5px 0;
-        }
-
+        .nav-link:hover, .nav-link.active { color: var(--color-secondary); }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            transition: width 0.3s ease;
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--color-secondary); transition: width 0.3s;
         }
-
-        .nav-link:hover {
-            color: var(--color-secondary);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link.active {
-            color: var(--color-secondary);
-            font-weight: 600;
-        }
-
-        .nav-link.active::after {
-            width: 100%;
-        }
-
+        .nav-link:hover::after { width: 100%; }
+        
         .nav-cta {
             background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 16px;
-            box-shadow: 0 4px 10px rgba(224, 119, 38, 0.3);
+            color: white; padding: 10px 24px; border-radius: 50px; font-weight: 500; font-size: 15px;
+            box-shadow: 0 4px 10px rgba(224, 119, 38, 0.3); transition: transform 0.3s;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(224, 119, 38, 0.4); }
 
-        .nav-cta:hover {
-            box-shadow: 0 6px 15px rgba(224, 119, 38, 0.4);
-            transform: translateY(-3px);
-        }
+        .menu-toggle { display: none; cursor: pointer; z-index: 1001; }
+        .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--color-dark); transition: all 0.3s; }
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            margin-left: 10px;
-            flex-shrink: 0;
-        }
-
-        .menu-icon, 
-        .close-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        .close-icon {
-            display: none;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 70px;
-            right: -100%;
-            width: 80%;
-            height: calc(100vh - 70px);
-            background: white;
-            z-index: 40;
-            padding: 30px 20px;
-            transition: right 0.3s ease;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-            border-radius: 20px 0 0 0;
-            border-left: 1px solid rgba(224, 119, 38, 0.2);
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .mobile-nav-link {
-            color: var(--color-dark);
-            font-weight: 500;
-            font-size: 16px;
-            padding: 15px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: white;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-        }
-
-        .mobile-nav-link:hover, .mobile-nav-link.active {
-            background: rgba(224, 119, 38, 0.1);
-            color: var(--color-secondary-dark);
-        }
-
-        .mobile-nav-icon {
-            margin-right: 15px;
-            color: var(--color-secondary);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            z-index: 30;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Main Content */
-        .main {
-            padding-top: 70px;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* --- Hero Section --- */
         .land-hero {
             position: relative;
-            height: 70vh;
-            min-height: 500px;
-            max-height: 700px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background-color: var(--color-primary-dark);
+            height: 85vh; min-height: 600px;
+            display: flex; align-items: center; overflow: hidden;
         }
-
         .land-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.6;
-            transform: scale(1.05);
-            animation: heroZoom 10s infinite alternate ease-in-out;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center; z-index: 0;
         }
-
-        @keyframes heroZoom {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.05);
-            }
+        .land-hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(16, 61, 3, 0.85), rgba(70, 128, 8, 0.6));
+            z-index: 1;
         }
-
         .land-hero-content {
-            position: relative;
-            z-index: 10;
-            color: white;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+            position: relative; z-index: 10; color: white; text-align: center;
+            max-width: 900px; margin: 60px auto 0; padding: 0 20px;
         }
-
+        /* Orange text, no background */
         .land-hero-subtitle {
             color: var(--color-secondary);
-            font-size: 18px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 15px; display: block;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
-
         .land-hero-title {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 42px; font-weight: 700; line-height: 1.3; margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-
         .land-hero-description {
-            font-size: 18px;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 16px; margin-bottom: 35px; color: rgba(255, 255, 255, 0.95);
+            max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8;
+        }
+        /* Orange Button */
+        .btn-large {
+            display: inline-flex; align-items: center;
+            background: var(--color-secondary); color: white;
+            padding: 16px 40px; border-radius: 50px; font-weight: 600; font-size: 16px;
+            transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 2px solid var(--color-secondary);
+        }
+        .btn-large:hover {
+            background: transparent; color: white; border-color: white; transform: translateY(-3px);
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(224, 119, 38, 0.3);
-            margin-top: 20px;
+        /* --- Leaf Backgrounds --- */
+        .leaf-bg {
+            position: absolute; background-size: contain; background-repeat: no-repeat;
+            opacity: 0.08; pointer-events: none; z-index: 1;
         }
+        .leaf-1 { top: -50px; right: -100px; width: 400px; height: 400px; transform: rotate(15deg); }
+        .leaf-2 { bottom: -50px; left: -100px; width: 350px; height: 350px; transform: rotate(-15deg); }
+        .leaf-3 { top: 20%; left: 5%; width: 200px; height: 200px; transform: rotate(45deg); opacity: 0.05; }
 
-        .hero-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(224, 119, 38, 0.4);
-        }
-
-        .hero-cta svg {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-cta:hover svg {
-            transform: translateX(5px);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-light {
-            background-color: #fff;
-        }
-
-        .section-dark {
-            background-color: #f9f9f9;
-        }
-
-        .section-accent {
-            background-color: var(--color-primary-light);
-            position: relative;
-        }
-
-        .section-accent::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23468008' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-            z-index: 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
+        /* --- Sections --- */
+        .section { padding: 80px 0; position: relative; overflow: hidden; }
+        .section-light { background-color: #fff; }
+        .section-gray { background-color: #f9f9f9; }
+        
+        .section-title { text-align: center; margin-bottom: 40px; position: relative; z-index: 2; }
         .section-title h2 {
-            font-size: 42px;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            margin-bottom: 15px;
-            position: relative;
+            font-size: 30px; font-weight: 700; color: var(--color-primary-dark);
+            margin-bottom: 15px; position: relative; display: inline-block;
         }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            border-radius: 3px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            color: var(--color-gray);
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        /* About Land Section */
-        .about-land-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        @media (min-width: 992px) {
-            .about-land-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .about-land-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            height: 450px;
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: transform 0.5s ease;
-        }
-
-        .about-land-image:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .about-land-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3));
-            z-index: 1;
-        }
-
-        .about-land-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .about-land-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-land-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-land-content h3 {
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--color-primary-dark);
-            position: relative;
-            display: inline-block;
-        }
-
-        .about-land-content h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            border-radius: 3px;
-        }
-
-        .about-land-content p {
-            margin-bottom: 20px;
-            font-size: 17px;
-            line-height: 1.8;
-            color: var(--color-gray);
-        }
-
-        /* Investment Options Section */
-        .investment-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        @media (min-width: 768px) {
-            .investment-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .investment-options {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .investment-card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-        }
-
-        .investment-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .investment-header {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            padding: 25px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .investment-header::before {
-            content: '';
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            top: -75px;
-            right: -75px;
-            border-radius: 50%;
-        }
-
-        .investment-header::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-            bottom: -50px;
-            left: -50px;
-            border-radius: 50%;
-        }
-
-        .investment-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .investment-price {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .investment-unit {
-            font-size: 16px;
-            opacity: 0.8;
-        }
-
-        .investment-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .investment-features {
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .investment-feature {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: var(--color-gray);
-        }
-
-        .investment-feature-icon {
-            color: var(--color-primary);
-            margin-right: 10px;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .investment-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(224, 119, 38, 0.2);
-            text-align: center;
-        }
-
-        .investment-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(224, 119, 38, 0.3);
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        @media (min-width: 768px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .features-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--color-primary-light), rgba(255, 255, 255, 0.8));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--color-primary-dark);
-            box-shadow: 0 10px 20px rgba(70, 128, 8, 0.15);
-            transition: transform 0.4s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: rotateY(180deg);
-        }
-
-        .feature-icon svg {
-            width: 35px;
-            height: 35px;
-            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
-        }
-
-        .feature-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--color-primary-dark);
-        }
-
-        .feature-description {
-            font-size: 16px;
-            color: var(--color-gray);
-            line-height: 1.7;
-        }
-
-        /* Gallery Section */
-        .gallery-container {
-            position: relative;
-            width: 100%;
-            margin-bottom: 50px;
-        }
-
-        .gallery-wrapper {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            gap: 20px;
-            padding: 20px 0;
-            scrollbar-width: none; /* Firefox */
-        }
-
-        .gallery-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-
-        .gallery-item {
-            flex: 0 0 auto;
-            width: 100%;
-            scroll-snap-align: start;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        @media (min-width: 768px) {
-            .gallery-item {
-                width: calc(50% - 10px);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .gallery-item {
-                width: calc(33.333% - 14px);
-            }
+        .section-title h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 4px; background: var(--color-secondary); border-radius: 2px;
         }
+        .section-title p { max-width: 700px; margin: 0 auto; color: var(--color-gray); }
 
-        .gallery-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        /* --- Eligibility --- */
+        .eligibility-section {
+            background-image: url('https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.30.23%20AM.jpeg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            position: relative; color: white;
         }
-
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.05);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-            color: white;
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .gallery-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .gallery-nav-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .gallery-nav-btn:hover {
-            background: var(--color-primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-nav-btn svg {
-            width: 20px;
-            height: 20px;
-            color: var(--color-primary-dark);
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .faq-item {
-            background-color: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--color-primary-dark);
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            color: var(--color-secondary);
-        }
-
-        .faq-icon {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 20px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding-bottom: 20px;
-        }
-
-        .faq-answer p {
-            color: var(--color-gray);
-            line-height: 1.7;
+        .eligibility-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(16, 61, 3, 0.9); z-index: 1;
         }
+        .eligibility-section .section-title h2 { color: white; }
+        .eligibility-section .section-title p { color: rgba(255,255,255,0.9); }
+        
+        .housing-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px; position: relative; z-index: 2;
+        }
+        .housing-card {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 15px; overflow: hidden;
+            height: 280px; transition: transform 0.3s ease; position: relative;
+        }
+        .housing-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.2); }
+        .housing-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+        .housing-card-title {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white; font-weight: 600; font-size: 16px; border-left: 5px solid var(--color-secondary);
+        }
+
+        /* --- Why Join Cooperative --- */
+        .coop-grid {
+            display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+        }
+        @media(min-width: 992px) { .coop-grid { grid-template-columns: 1.2fr 0.8fr; } }
+        
+        .checklist-item {
+            display: flex; align-items: flex-start; margin-bottom: 15px;
+        }
+        .check-icon {
+            color: var(--color-primary); margin-right: 15px; font-size: 20px; margin-top: 2px;
+        }
+        .check-text { font-size: 16px; color: var(--color-gray); }
+
+        /* --- Categories --- */
+        .categories-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .category-card {
+            background: white; padding: 25px; border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-left: 4px solid var(--color-primary);
+        }
+        .cat-number {
+            font-size: 40px; color: var(--color-primary-light); font-weight: 800; line-height: 1; margin-bottom: 10px;
+        }
+        .cat-text { font-weight: 600; color: var(--color-dark); }
+
+        /* --- Affordability --- */
+        .affordability-grid {
+            display: grid; grid-template-columns: 1fr; gap: 50px; align-items: flex-start;
+        }
+        @media(min-width: 992px) { .affordability-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .calc-box {
+            background: white; border-radius: 20px; padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); border: 1px solid #eee; position: relative; z-index: 2;
+        }
+        .salary-highlight {
+            background: #f0f7eb; padding: 20px; border-radius: 15px; text-align: center; margin-bottom: 25px;
+        }
+        .salary-amount { font-size: 32px; font-weight: 700; color: var(--color-primary); line-height: 1.2; }
+        .salary-label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+
+        .calc-row {
+            display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px dashed #ddd;
+        }
+        .calc-row:last-child { border-bottom: none; }
+        .calc-key { font-weight: 500; color: #555; }
+        .calc-val { font-weight: 700; color: var(--color-dark); }
+
+        /* --- Construction --- */
+        .construction-box {
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: white; padding: 40px; border-radius: 20px; text-align: center;
+        }
+        .construction-options {
+            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;
+        }
+        .con-option {
+            background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; flex: 1; min-width: 250px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
 
-        /* CTA Section */
+        /* --- Accordion (Documentation) --- */
+        .accordion { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+        .accordion-item {
+            background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .accordion-header {
+            padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-weight: 600; color: var(--color-dark); background: #fff; transition: all 0.3s;
+        }
+        .accordion-header:hover { background: #f9f9f9; color: var(--color-secondary); }
+        .accordion-icon { width: 24px; height: 24px; position: relative; }
+        .accordion-icon::before, .accordion-icon::after {
+            content: ''; position: absolute; background: var(--color-gray); transition: 0.3s;
+        }
+        .accordion-icon::before { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+        .accordion-icon::after { width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); }
+        
+        .accordion-item.active .accordion-icon::before { transform: translateX(-50%) rotate(90deg); }
+        .accordion-item.active .accordion-header { color: var(--color-secondary); }
+        
+        .accordion-body {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fafafa;
+        }
+        .accordion-content { padding: 20px; color: var(--color-gray); font-size: 15px; }
+
+        /* --- Steps --- */
+        .steps-wrapper { position: relative; max-width: 900px; margin: 0 auto; }
+        .step-row { display: flex; gap: 20px; margin-bottom: 25px; position: relative; z-index: 2; }
+        .steps-wrapper::before {
+            content: ''; position: absolute; top: 15px; bottom: 0; left: 20px; width: 2px; background: #e0e0e0; z-index: 0;
+        }
+        .step-circle {
+            width: 42px; height: 42px; background: var(--color-secondary); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; position: relative; z-index: 1;
+            box-shadow: 0 4px 10px rgba(224, 119, 38, 0.4);
+        }
+        .step-info {
+            background: white; padding: 15px 20px; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            flex-grow: 1; border: 1px solid #f0f0f0;
+        }
+        .step-info h4 { font-size: 16px; font-weight: 600; margin-bottom: 5px; color: var(--color-dark); }
+        .step-info p { font-size: 14px; color: var(--color-gray); margin: 0; }
+
+        /* --- Chairman --- */
+        .chairman-section {
+            background: linear-gradient(135deg, #103d03 0%, #1a5c05 100%); color: white;
+            border-radius: 20px; padding: 60px 40px; position: relative; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(16, 61, 3, 0.3); margin-top: 60px;
+        }
+        .chairman-section::after {
+            content: '"'; position: absolute; top: 10px; right: 30px; font-size: 150px;
+            color: rgba(255,255,255,0.05); font-family: serif; line-height: 1;
+        }
+        .chairman-grid {
+            display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: center; position: relative; z-index: 2;
+        }
+        .chairman-img-frame {
+            width: 180px; height: 180px; border-radius: 50%; padding: 5px; background: rgba(255,255,255,0.2);
+        }
+        .chairman-img {
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid white;
+        }
+        .quote-content h3 { font-size: 20px; font-weight: 300; font-style: italic; margin-bottom: 20px; line-height: 1.6; }
+
+        /* --- CTA --- */
         .cta-section {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            padding: 100px 0;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            text-align: center; padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Aerial%20View.png-lrYG7tqqUFZaq8Y2fKU2haUlrakNap.jpeg');
+            background-size: cover; background-position: center; background-attachment: fixed; color: white;
         }
 
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.2;
+        /* --- Footer --- */
+        .footer { background-color: #1a1a1a; color: white; padding: 60px 0 20px; font-size: 14px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        
+        /* Updated Footer Styles */
+        .footer-logo { display: flex; align-items: center; margin-bottom: 15px; }
+        .footer-logo img { width: 40px; height: auto; margin-right: 10px; }
+        .footer-logo-text { font-weight: 600; font-size: 14px; color: white; }
+        .footer-description { font-size: 13px; color: #999; line-height: 1.6; margin-bottom: 15px; }
+        .footer-heading { color: var(--color-secondary); margin-bottom: 20px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        
+        .footer-links li { margin-bottom: 12px; }
+        .footer-link { color: #999; transition: 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--color-secondary); padding-left: 5px; }
+        
+        .footer-contact-item { display: flex; align-items: flex-start; margin-bottom: 12px; color: #999; font-size: 13px; }
+        .footer-contact-icon { color: var(--color-secondary); margin-right: 10px; flex-shrink: 0; margin-top: 2px; }
+        
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; text-align: center; color: #777; font-size: 13px; }
+
+        @media (max-width: 991px) {
+            .chairman-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .chairman-img-frame { margin: 0 auto; }
+            .steps-wrapper::before { left: 19px; }
         }
 
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-description {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 35px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            color: white;
-            border: none;
-            box-shadow: 0 10px 20px rgba(224, 119, 38, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(224, 119, 38, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-outline:hover {
-            background-color: white;
-            color: var(--color-primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Contact Form */
-        .contact-form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--color-primary-dark);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-family: var(--font-sans);
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px var(--color-primary-light);
-        }
-
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(70, 128, 8, 0.2);
-            width: 100%;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(70, 128, 8, 0.3);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 70px 0 25px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.2;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .footer-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo img {
-            width: 45px;
-            height: auto;
-            margin-right: 12px;
-        }
-
-        .footer-logo-text {
-            font-weight: 600;
-            font-size: 16px;
-            color: white;
-        }
-
-        .footer-description {
-            font-size: 14px;
-            color: #aaa;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .footer-heading {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            position: relative;
-        }
-
-        .footer-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-link {
-            color: #aaa;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .footer-link:hover {
-            color: var(--color-secondary);
-            transform: translateX(5px);
-        }
-
-        .footer-link svg {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            opacity: 0.7;
-        }
-
-        .footer-contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        .footer-contact-icon {
-            color: var(--color-secondary);
-            margin-right: 12px;
-            margin-top: 3px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .footer-social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .footer-social-link:hover::before {
-            opacity: 1;
-        }
-
-        .footer-social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer-social-link svg {
-            width: 18px;
-            height: 18px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            text-align: center;
-            color: #777;
-            font-size: 14px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 767px) {
-            .menu-toggle {
-                display: block;
-            }
-
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
             .nav-menu {
-                display: none;
+                position: fixed; top: 70px; right: -100%; width: 80%; height: calc(100vh - 70px);
+                background: white; flex-direction: column; align-items: flex-start; padding: 40px;
+                transition: 0.4s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             }
-
-            .section {
-                padding: 70px 0;
-            }
-
-            .land-hero-title {
-                font-size: 36px;
-            }
-
-            .section-title h2 {
-                font-size: 32px;
-            }
-
-            .about-land-content h3 {
-                font-size: 28px;
-            }
-
-            .cta-title {
-                font-size: 32px;
-            }
-
-            .investment-card, .feature-card {
-                max-width: 350px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        /* Animation classes */
-        [data-aos] {
-            opacity: 0;
-            transition-property: opacity, transform;
-        }
-
-        [data-aos].aos-animate {
-            opacity: 1;
-        }
-
-        [data-aos="fade-up"] {
-            transform: translateY(40px);
-        }
-
-        [data-aos="fade-up"].aos-animate {
-            transform: translateY(0);
-        }
-
-        [data-aos="fade-right"] {
-            transform: translateX(-40px);
-        }
-
-        [data-aos="fade-right"].aos-animate {
-            transform: translateX(0);
-        }
-
-        [data-aos="fade-left"] {
-            transform: translateX(40px);
-        }
-
-        [data-aos="fade-left"].aos-animate {
-            transform: translateX(0);
-        }
-
-        [data-aos="zoom-in"] {
-            transform: scale(0.9);
-        }
-
-        [data-aos="zoom-in"].aos-animate {
-            transform: scale(1);
+            .nav-menu.active { right: 0; }
+            .nav-link { font-size: 18px; margin-bottom: 10px; width: 100%; display: block; }
+            .nav-cta { width: 100%; text-align: center; margin-top: 20px; display: block; }
+            .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+            .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
     </style>
 </head>
 <body>
-    <!-- Leaf Background Elements -->
-    <div class="leaf-bg">
-        <div class="leaf leaf-1"></div>
-        <div class="leaf leaf-2"></div>
-        <div class="leaf leaf-3"></div>
-        <div class="leaf leaf-4"></div>
-    </div>
 
     <!-- Header -->
-    <header class="header" id="header">
+    <header class="header">
         <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/full_color_icon-v6Vsg1rTUI4UPAvxF3enZTCamSBqjw.png" alt="Sunrise Cooperative Logo">
-                <span class="logo-text">SunRise Multipurpose Cooperative Society</span>
+                <span class="logo-text">SunRise<br>Cooperative</span>
             </a>
-
-            <nav class="nav hidden-mobile">
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about-page.html" class="nav-link">About Us</a></li>
-                    <li><a href="land-investment.html" class="nav-link active">Real Estate Investment</a></li>
-                    
-                    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
-                </ul>
+            <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about-page.html" class="nav-link">About Us</a>
+                <a href="land-investment.html" class="nav-link">Home Ownership Programme</a>
+                <a href="https://forms.gle/KkH7x8Dns63SxZ7A8" target="_blank" class="nav-cta">Apply Now</a>
             </nav>
-
-            <button class="menu-toggle hidden-desktop" id="menuToggle" aria-label="Toggle menu">
-                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-                <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <nav>
-            <ul class="mobile-nav">
-                <li>
-                    <a href="index.html" class="mobile-nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-nav-icon">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="about-page.html" class="mobile-nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-nav-icon">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 16v-4"></path>
-                            <path d="M12 8h.01"></path>
-                        </svg>
-                        About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="land-investment.html" class="mobile-nav-link active">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-nav-icon">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                          </svg>
-                        Real Estate Investment
-                    </a>
-                </li>
-                <li>
-                    <a href="contact.html" class="mobile-nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-nav-icon">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Contact Us
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="overlay" id="overlay"></div>
-
-    <main class="main">
+    <main>
+        
         <!-- Hero Section -->
         <section class="land-hero">
-            <div class="land-hero-bg" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Aerial%20View.png-lrYG7tqqUFZaq8Y2fKU2haUlrakNap.jpeg')"></div>
-            <div class="land-hero-content">
-                <h3 class="land-hero-subtitle" data-aos="fade-up" data-aos-duration="800">SECURE YOUR FUTURE</h3>
-                <h1 class="land-hero-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Land Acquisition & Investment</h1>
-                <p class="land-hero-description" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Invest in premium land opportunities with SunRise Cooperative for sustainable growth and long-term returns</p>
-                <a href="#investment-options" class="hero-cta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                    Explore Investment Options
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5l7 7-7 7"></path>
-                    </svg>
+            <div class="land-hero-bg" style="background-image: url('https://vorv4jye8h09tbza.public.blob.vercel-storage.com/medium-shot-parents-kid.jpg');"></div>
+            <div class="land-hero-overlay"></div>
+            
+            <div class="land-hero-content" data-aos="fade-up">
+                <!-- Subtitle: Orange, No Background -->
+                <span class="land-hero-subtitle">National Housing Scheme</span>
+                <h1 class="land-hero-title">Own Your Dream Home in<br>Akwa Ibom State</h1>
+                <p class="land-hero-description">Empowering Workers, Artisans, Farmers & Small Business Owners with constitutionally-backed housing solutions.</p>
+                <!-- Button: Orange Background -->
+                <a href="https://forms.gle/KkH7x8Dns63SxZ7A8" target="_blank" class="btn-large">
+                    Start Your Application
+                    <svg style="margin-left:10px; width:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </a>
             </div>
         </section>
 
-        <!-- About Land Section -->
+        <!-- About / Why Trust Us Section (New) -->
+        <section class="section section-light">
+            <div class="leaf-bg leaf-1" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png');"></div>
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Why Trust Us?</h2>
+                </div>
+                <div style="max-width: 900px; margin: 0 auto; text-align: center;" data-aos="fade-up" data-aos-delay="100">
+                    <p style="font-size: 18px; margin-bottom: 25px; line-height: 1.8; color: var(--color-dark);">
+                        SunRise Cooperative Society Ltd—the <span style="color: var(--color-secondary); font-weight: 600;">only FMBN-certified Cooperative in Akwa Ibom State</span>—is leading the mission to help workers and income earners own affordable homes through the National Housing Scheme (NHS).
+                    </p>
+                    <p style="font-size: 16px; color: var(--color-gray); margin-bottom: 25px;">
+                        This programme is backed by the <strong>Nigerian Constitution (Act No. 2 of 1992 and Act No. 3 of 1992)</strong>, which guarantees every Nigerian’s right to home ownership.
+                    </p>
+                    <p style="font-size: 16px; color: var(--color-gray);">
+                        We are committed to helping workers, artisans, farmers, and business owners access mortgage funding, secure their housing documents, and transition into genuine homeowners.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Join Cooperative -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why You Must Join a Cooperative</h2>
+                    <p>To access the housing scheme, applicants must belong to a cooperative.</p>
+                </div>
+                
+                <div class="coop-grid">
+                    <div data-aos="fade-right">
+                        <h3 style="margin-bottom: 20px; font-size: 20px; color: var(--color-primary-dark);">SunRise Cooperative is:</h3>
+                        <div class="checklist-item">
+                            <div class="check-icon">✔</div>
+                            <div class="check-text">Certified by Federal Mortgage Bank of Nigeria (FMBN)</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-icon">✔</div>
+                            <div class="check-text">Authorized to process National Housing Numbers</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-icon">✔</div>
+                            <div class="check-text">Qualified to submit and follow up documentation</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-icon">✔</div>
+                            <div class="check-text">Responsible for monitoring 2.5% monthly NHF payments</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-icon">✔</div>
+                            <div class="check-text">Empowered to interface with the State Government for C of O & Letters of Consent</div>
+                        </div>
+                        <p style="margin-top: 20px; font-style: italic; color: var(--color-secondary);">We help you handle all the steps—from NHF compliance to document processing, mortgage approval, and final allocation.</p>
+                    </div>
+                    <div style="text-align: center;" data-aos="fade-left">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/Federal-Mortgage-Bank-of-Nigeria-FMBN.jpg" alt="FMBN" style="max-height: 150px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Eligibility Section (Updated Text) -->
+        <section class="section eligibility-section">
+            <div class="eligibility-overlay"></div>
+            <div class="leaf-bg leaf-2" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png'); opacity: 0.1;"></div>
+
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Who Is Eligible?</h2>
+                    <p style="font-size: 18px; color: white; font-weight: 500; margin-bottom: 15px;">Anyone Earning Income and Paying Into a Bank Account.</p>
+                    <p style="font-size: 15px; max-width: 600px; margin: 0 auto; margin-bottom: 30px;">
+                        If you earn income and can show bank inflow, you qualify. 
+                        <br><br>
+                        <em>Note: Workers under Akwa Ibom State Government already contribute 2.5% NHF automatically, which qualifies them after 6 months.</em>
+                    </p>
+                </div>
+
+                <div class="housing-grid">
+                    <div class="housing-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.30.55%20AM.jpeg" alt="Civil Servant">
+                        <div class="housing-card-title">Civil Servants</div>
+                    </div>
+                    <div class="housing-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.32.19%20AM.jpeg" alt="Private Sector">
+                        <div class="housing-card-title">Private Sector Workers</div>
+                    </div>
+                    <div class="housing-card" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.31.13%20AM.jpeg" alt="Artisans">
+                        <div class="housing-card-title">Artisans & Skilled Workers</div>
+                    </div>
+                    <div class="housing-card" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.33.18%20AM.jpeg" alt="Business">
+                        <div class="housing-card-title">Small Business Owners</div>
+                    </div>
+                    <div class="housing-card" data-aos="fade-up" data-aos-delay="500">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-30%20at%207.33.37%20AM.jpeg" alt="Farmers">
+                        <div class="housing-card-title">Farmers (Recognized as Business)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Land Categories Section (New) -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Categories of Land/Property Owners Who Can Apply</h2>
+                    <p>Whether you have complete or partial documents, SunRise Cooperative provides the guidance needed.</p>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card" data-aos="fade-up">
+                        <div class="cat-number">01</div>
+                        <div class="cat-text">Landowners with Certificate of Occupancy (C of O)</div>
+                    </div>
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="cat-number">02</div>
+                        <div class="cat-text">Landowners with Certificate of Deposit</div>
+                    </div>
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="cat-number">03</div>
+                        <div class="cat-text">Landowners with C of O + Letter of Consent</div>
+                    </div>
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="cat-number">04</div>
+                        <div class="cat-text">People with only Survey Plan</div>
+                    </div>
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="cat-number">05</div>
+                        <div class="cat-text">People with land but no official documents yet</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Affordability Section (Updated Financials) -->
+        <section class="section section-light">
+            <div class="leaf-bg leaf-3" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png');"></div>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Affordable For Everyone</h2>
+                    <p>Understanding the Financial Requirements & House Qualification</p>
+                </div>
+
+                <div class="affordability-grid">
+                    <div class="calc-box" data-aos="fade-right">
+                        <h3 style="margin-bottom: 20px;">Monthly NHF Contribution</h3>
+                        <div class="salary-highlight">
+                            <div class="salary-label">Contribution Requirement</div>
+                            <div class="salary-amount">₦1,750 <span style="font-size: 16px; font-weight: 500;">/month</span></div>
+                            <div style="font-size: 13px; margin-top: 5px; color: #777;">(2.5% of National Minimum Wage Basic Salary ₦70,000)</div>
+                        </div>
+                        <p style="font-size: 14px; text-align: center;">Members become eligible after <strong>six months</strong> of consistent contribution. <br><br> For business owners and farmers, contributions are done monthly through the cooperative.</p>
+                    </div>
+
+                    <div class="calc-box" data-aos="fade-left">
+                        <h3 style="margin-bottom: 20px;">Affordability Index Method</h3>
+                        <p style="margin-bottom: 15px; font-size: 14px;">The Federal Mortgage Bank uses this computation to place everyone in a category they can afford. No one is rejected.</p>
+                        
+                        <div class="calc-row"><span class="calc-key">Analysis Basis</span> <span class="calc-val">33.3% of Monthly Income</span></div>
+                        <div class="calc-row"><span class="calc-key">Proof Required</span> <span class="calc-val">Last 12-Month Bank Statement</span></div>
+                        <div class="calc-row"><span class="calc-key">Factors</span> <span class="calc-val">Business/Salary Inflow</span></div>
+                        
+                        <div style="margin-top: 20px;">
+                            <h4 style="font-size: 15px; margin-bottom: 10px; color: var(--color-primary);">House Types You May Qualify For:</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <span style="background: #eee; padding: 5px 10px; border-radius: 5px; font-size: 13px;">Self-contained</span>
+                                <span style="background: #eee; padding: 5px 10px; border-radius: 5px; font-size: 13px;">1-Bedroom</span>
+                                <span style="background: #eee; padding: 5px 10px; border-radius: 5px; font-size: 13px;">2-Bedroom</span>
+                                <span style="background: #eee; padding: 5px 10px; border-radius: 5px; font-size: 13px;">3-Bedroom</span>
+                                <span style="background: #eee; padding: 5px 10px; border-radius: 5px; font-size: 13px;">Semi-Detached</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Construction Section (New) -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="construction-box" data-aos="zoom-in">
+                    <h2 style="font-size: 28px; margin-bottom: 15px;">Construction & Building Approval</h2>
+                    <p style="opacity: 0.9;">Every construction must follow Federal Mortgage Bank guidelines to be approved.</p>
+                    
+                    <div class="construction-options">
+                        <div class="con-option">
+                            <h4 style="font-size: 18px; margin-bottom: 10px;">Option A</h4>
+                            <p>Buildings constructed by <strong>Sunrise Cooperative–assigned builders</strong></p>
+                        </div>
+                        <div class="con-option">
+                            <h4 style="font-size: 18px; margin-bottom: 10px;">Option B</h4>
+                            <p>Buildings constructed by <strong>Your personal architect</strong> <br><span style="font-size: 12px;">(must be FMBN-registered or licensed)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation & Outside Uyo (Accordion) -->
         <section class="section section-light">
             <div class="container">
-                <div class="about-land-grid">
-                    <div class="about-land-image" data-aos="fade-right" data-aos-duration="1000">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Access%20Road.png-Y2NbjrtnLqqBi4JjzlSqOlBzAAPqvZ.jpeg" alt="SunRise Estate Access Road">
-                    </div>
-                    <div class="about-land-content" data-aos="fade-left" data-aos-duration="1000">
-                        <h3>Strategic Land Investment</h3>
-                        <p>At SunRise Multipurpose Cooperative Society, we offer premium land acquisition opportunities in strategically located areas with high growth potential. Our land investments are carefully selected to provide both short-term appreciation and long-term value growth.</p>
-                        <p>We focus on properties with clear titles, proper documentation, and excellent development prospects. Each parcel of land undergoes thorough due diligence to ensure it meets our strict quality standards and offers genuine value to our investors.</p>
-                        <p>Whether you're looking to build your dream home, develop commercial property, or simply diversify your investment portfolio, our land acquisition program provides a secure pathway to ownership with flexible payment options tailored to your financial capacity.</p>
-                    </div>
+                <div class="section-title">
+                    <h2>Documentation & Location Support</h2>
                 </div>
-            </div>
-        </section>
-
-        <!-- Investment Options Section -->
-        <section class="section section-dark" id="investment-options">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-                    <h2>Investment Options</h2>
-                </div>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Choose from our range of land investment packages designed to meet different investment goals and budgets</p>
                 
-                <div class="investment-options">
-                    <!-- Option 1 -->
-                    <div class="investment-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                        <div class="investment-header">
-                            <h3 class="investment-title">Starter Plot</h3>
-                            <p class="investment-price">₦1.5M <span class="investment-unit">/ plot</span></p>
+                <div class="accordion">
+                    <!-- Item 1 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            What If You Have No Land Documents?
+                            <div class="accordion-icon"></div>
                         </div>
-                        <div class="investment-content">
-                            <div class="investment-features">
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>300 sqm residential plot</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Flexible payment plan (6 months)</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Secure land title documentation</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Access to community amenities</span>
-                                </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                SunRise Cooperative assists in:
+                                <ul style="list-style: disc; padding-left: 20px; margin-top: 10px;">
+                                    <li>Securing State-issued Letter of Consent</li>
+                                    <li>Processing Right of Occupancy (R of O) from your Local Government</li>
+                                    <li>Facilitating C of O eventually</li>
+                                </ul>
+                                <p style="margin-top: 10px; font-weight: 500; color: var(--color-primary);">These documents guarantee you are fully protected and legally approved to build.</p>
                             </div>
-                            <a href="#contact" class="investment-cta">Get Started</a>
                         </div>
                     </div>
-                    
-                    <!-- Option 2 -->
-                    <div class="investment-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                        <div class="investment-header">
-                            <h3 class="investment-title">Premium Plot</h3>
-                            <p class="investment-price">₦3.2M <span class="investment-unit">/ plot</span></p>
+
+                    <!-- Item 2 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            For Applicants Outside Uyo or in LGAs
+                            <div class="accordion-icon"></div>
                         </div>
-                        <div class="investment-content">
-                            <div class="investment-features">
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>500 sqm prime location plot</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Flexible payment plan (12 months)</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Complete legal documentation</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Corner piece allocation available</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Priority infrastructure access</span>
-                                </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p><strong>Your Local Government can issue:</strong> Right of Occupancy (R of O)</p>
+                                <p style="margin-top: 10px;"><strong>While the State Government issues:</strong> Letter of Consent (LOP)</p>
+                                <p style="margin-top: 15px; color: var(--color-secondary); font-weight: 600;">SunRise Cooperative coordinates this process on your behalf.</p>
                             </div>
-                            <a href="#contact" class="investment-cta">Get Started</a>
                         </div>
                     </div>
-                    
-                    <!-- Option 3 -->
-                    <div class="investment-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                        <div class="investment-header">
-                            <h3 class="investment-title">Commercial Plot</h3>
-                            <p class="investment-price">₦5.8M <span class="investment-unit">/ plot</span></p>
+
+                    <!-- Item 3 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Example: Land Sharing for Affordable Home Construction
+                            <div class="accordion-icon"></div>
                         </div>
-                        <div class="investment-content">
-                            <div class="investment-features">
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>1000 sqm commercial plot</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Strategic roadside location</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Customized payment structure</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Business development support</span>
-                                </div>
-                                <div class="investment-feature">
-                                    <svg class="investment-feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span>Enhanced security features</span>
-                                </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>A standard 1,000 sqm plot can be shared among 4 applicants:</p>
+                                <ul style="list-style: disc; padding-left: 20px; margin-top: 5px;">
+                                    <li>Each person gets 250 sqm</li>
+                                    <li>Enough for a full self-contained structure</li>
+                                    <li>Cost becomes more affordable</li>
+                                    <li>Cooperative finances and structures the development</li>
+                                </ul>
+                                <p style="margin-top: 10px;">This method helps low and middle-income earners own property easily.</p>
                             </div>
-                            <a href="#contact" class="investment-cta">Get Started</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="section section-light">
+        <!-- Application Steps (Complete 10 Steps) -->
+        <section class="section section-gray">
+             <div class="leaf-bg leaf-1" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000118578-removebg-preview-5jYsOo06mxkQEF30YDmrOUuyAEuVBk.png'); top: 100px;"></div>
             <div class="container">
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-                    <h2>Why Invest With Us</h2>
+                <div class="section-title">
+                    <h2>Application Steps (Simplified)</h2>
                 </div>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Discover the unique advantages of investing in land with SunRise Cooperative Society</p>
-                
-                <div class="features-grid">
-                    <!-- Feature 1 -->
-                    <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Value Appreciation</h3>
-                        <p class="feature-description">Our strategically located lands consistently appreciate in value, providing excellent returns on investment over time.</p>
-                    </div>
-                    
-                    <!-- Feature 2 -->
-                    <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Flexible Payment</h3>
-                        <p class="feature-description">We offer customized payment plans that accommodate your financial situation, making land ownership accessible.</p>
-                    </div>
-                    
-                    <!-- Feature 3 -->
-                    <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Secure Investment</h3>
-                        <p class="feature-description">All our properties come with proper documentation and clear titles, ensuring your investment is legally protected.</p>
-                    </div>
-                    
-                    <!-- Feature 4 -->
-                    <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Community Development</h3>
-                        <p class="feature-description">By investing with us, you become part of a growing community with shared infrastructure and amenities.</p>
-                    </div>
+                <div class="steps-wrapper">
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">1</div><div class="step-info"><h4>Join SunRise Cooperative Society Ltd.</h4><p>Register as a member.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">2</div><div class="step-info"><h4>Fill the National Housing Scheme form</h4><p>Complete the application details.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">3</div><div class="step-info"><h4>Submit Employment/Business/Bio-data Documents</h4><p>Proof of income and identity.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">4</div><div class="step-info"><h4>Submit Land Papers (if available)</h4><p>C of O, Survey plan, etc.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">5</div><div class="step-info"><h4>Submit One-Year Bank Statement</h4><p>To verify financial capacity.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">6</div><div class="step-info"><h4>Begin/Continue 2.5% NHF Contributions</h4><p>Consistent monthly payments.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">7</div><div class="step-info"><h4>Cooperative Processes & Submits File to FMBN</h4><p>We handle the submission.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">8</div><div class="step-info"><h4>State/Local Govt Issues Land Document Consent</h4><p>Regulatory approvals.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">9</div><div class="step-info"><h4>Construction Begins Through Approved Builders</h4><p>Development starts on site.</p></div></div>
+                    <div class="step-row" data-aos="fade-up"><div class="step-circle">10</div><div class="step-info"><h4>You Take Possession of Your Home</h4><p>Become a landlord.</p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section class="section section-dark">
+        <!-- Chairman Message -->
+        <section class="section">
             <div class="container">
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-                    <h2>Property Gallery</h2>
-                </div>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Explore our available land properties through these visual showcases</p>
-                
-                <div class="gallery-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="gallery-wrapper" id="gallery">
-                        <div class="gallery-item">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Aerial%20View.png-lrYG7tqqUFZaq8Y2fKU2haUlrakNap.jpeg" alt="SunRise Estate Aerial View" class="gallery-image">
-                            <div class="gallery-caption">Aerial View of SunRise Estate</div>
+                <div class="chairman-section" data-aos="zoom-in">
+                    <div class="chairman-grid">
+                        <div class="chairman-img-frame">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7784.jpg-b24Vzhaz11aueLzJoada19LtcbVo2g.jpeg" alt="Dr. Umanaette Udoh" class="chairman-img">
                         </div>
-                        <div class="gallery-item">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SunRise%20Estate%20Access%20Road.png-Y2NbjrtnLqqBi4JjzlSqOlBzAAPqvZ.jpeg" alt="SunRise Estate Access Road" class="gallery-image">
-                            <div class="gallery-caption">Main Access Road</div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/067c59c5070a50-residential-land-residential-land-for-sale-gwagwalada-abuja-XpEHqJ81MhhQBNCKoeMo6Vg3gIFHeR.jpeg" alt="SunRise Estate Layout" class="gallery-image">
-                            <div class="gallery-caption">Estate Layout Plan</div>
-                        </div>
-                    </div>
-                    <div class="gallery-nav">
-                        <button class="gallery-nav-btn" id="galleryPrev" aria-label="Previous image">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M15 18l-6-6 6-6"></path>
-                            </svg>
-                        </button>
-                        <button class="gallery-nav-btn" id="galleryNext" aria-label="Next image">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18l6-6-6-6"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="section section-light">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-                    <h2>Frequently Asked Questions</h2>
-                </div>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Find answers to common questions about our land investment opportunities</p>
-                
-                <div class="faq-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What types of land do you offer?</span>
-                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>We offer various types of land including residential plots, commercial plots, and agricultural land. Each type is carefully selected based on location, growth potential, and legal status to ensure the best investment opportunity for our members.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What documentation will I receive?</span>
-                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Upon completing your payment, you will receive a comprehensive documentation package including a Deed of Assignment, Survey Plan, and Receipt of Payment. For certain properties, we also provide Certificate of Occupancy (C of O) or Governor's Consent documentation depending on the land's status.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How flexible are your payment plans?</span>
-                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>We offer highly flexible payment plans tailored to different financial capacities. Options include outright purchase with discount, 3-month, 6-month, and 12-month installment plans. For commercial properties and larger acquisitions, we can create customized payment structures to accommodate your specific needs.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Can I visit the properties before investing?</span>
-                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>We encourage all potential investors to visit and inspect our properties before making a commitment. We organize regular site visits and can also arrange private tours upon request. This allows you to see the land, assess its location, and make an informed investment decision.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What happens if I can't complete my payments?</span>
-                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>We understand that financial circumstances can change. If you're unable to complete your payments according to the agreed schedule, please contact us as soon as possible. We can work with you to restructure your payment plan or explore other options. Our goal is to help you succeed in your investment journey.</p>
+                        <div class="quote-content">
+                            <h3>“This programme is real, achievable, and ordained to help our people own homes. The fear that government housing programmes do not work is false. This one works — and we are ready to guide you every step of the way.”</h3>
+                            <div style="margin-top: 20px;">
+                                <div style="font-size: 18px; font-weight: 700; color: var(--color-secondary);">Dr. Umanaette Udoh</div>
+                                <div style="font-size: 14px; opacity: 0.8; letter-spacing: 1px; text-transform: uppercase;">Chairman, SunRise Cooperative</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1848,66 +722,19 @@
 
         <!-- CTA Section -->
         <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2 class="cta-title" data-aos="fade-up" data-aos-duration="800">Ready to Secure Your Land Investment?</h2>
-                    <p class="cta-description" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Take the first step towards owning premium land with excellent growth potential. Our team is ready to guide you through the entire process.</p>
-                    <div class="cta-buttons" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                        <a href="#contact" class="btn btn-primary">Contact Us Today</a>
-                        <a href="#investment-options" class="btn btn-outline">View Investment Options</a>
-                    </div>
-                </div>
+            <div class="container" data-aos="fade-up">
+                <h2 style="font-size: 36px; margin-bottom: 20px; font-weight: 700;">Begin Your Home Ownership Journey Today</h2>
+                <p style="font-size: 18px; margin-bottom: 40px; opacity: 0.9;">After submitting, a Housing Officer from SunRise Cooperative will contact you for the next steps.</p>
+                <a href="https://forms.gle/KkH7x8Dns63SxZ7A8" target="_blank" class="nav-cta" style="padding: 15px 40px; font-size: 16px;">
+                    Start Your Application Here
+                </a>
+                <p style="margin-top: 20px; font-size: 14px; color: #ddd;">Visit our office: Plot 5 Unit F, Ewet Housing Estate Uyo</p>
             </div>
         </section>
 
-        <!-- Contact Form Section -->
-        <section class="section section-light" id="contact">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-                    <h2>Get In Touch</h2>
-                </div>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Have questions or ready to invest? Fill out the form below and our team will contact you shortly</p>
-                
-                <div class="contact-form-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <form id="landInvestmentForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="investmentType" class="form-label">Investment Interest</label>
-                            <select id="investmentType" name="investmentType" class="form-control" required>
-                                <option value="">Select an option</option>
-                                <option value="starter">Starter Plot</option>
-                                <option value="premium">Premium Plot</option>
-                                <option value="commercial">Commercial Plot</option>
-                                <option value="other">Other/Custom</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Additional Information</label>
-                            <textarea id="message" name="message" class="form-control" rows="4"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-submit">Submit Inquiry</button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -1923,9 +750,8 @@
                     <h3 class="footer-heading">Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="about-page.html" class="footer-link">About Us</a></li>
-                        <li><a href="lqnd-investment.html" class="footer-link">Land Acquisitions</a></li>
-
-                        <li><a href="contact-page.html" class="footer-link">Contact us</a></li>
+                        <li><a href="land-investment.html" class="footer-link">Land Acquisitions</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact us</a></li>
                     </ul>
                 </div>
 
@@ -1961,117 +787,67 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p>&copy; 2025 SunRise Multipurpose Cooperative Society. All Rights Reserved.</p>
+                <p>&copy; <span id="currentYear"></span> Sunrise Multipurpose Cooperative Society. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({
-                duration: 800,
-                easing: 'ease',
-                once: true
-            });
+        AOS.init({ duration: 800, once: true });
 
-            // Mobile Menu Toggle
-            const menuToggle = document.getElementById('menuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('overlay');
-            const menuIcon = document.querySelector('.menu-icon');
-            const closeIcon = document.querySelector('.close-icon');
+        // Set Current Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                menuIcon.style.display = menuIcon.style.display === 'none' ? 'block' : 'none';
-                closeIcon.style.display = closeIcon.style.display === 'block' ? 'none' : 'block';
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navMenu.classList.remove('active');
             });
+        });
 
-            overlay.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                menuIcon.style.display = 'block';
-                closeIcon.style.display = 'none';
-            });
-
-            // Header Scroll Effect
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            // FAQ Accordion
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    // Close all other items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    // Toggle current item
-                    item.classList.toggle('active');
-                });
-            });
-
-            // Gallery Navigation
-            const gallery = document.getElementById('gallery');
-            const galleryPrev = document.getElementById('galleryPrev');
-            const galleryNext = document.getElementById('galleryNext');
-            
-            galleryNext.addEventListener('click', () => {
-                gallery.scrollBy({ left: 300, behavior: 'smooth' });
-            });
-            
-            galleryPrev.addEventListener('click', () => {
-                gallery.scrollBy({ left: -300, behavior: 'smooth' });
-            });
-
-            // Form Submission
-            const landInvestmentForm = document.getElementById('landInvestmentForm');
-            if (landInvestmentForm) {
-                landInvestmentForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Here you would normally send the form data to your server
-                    alert('Thank you for your interest! Our team will contact you shortly.');
-                    landInvestmentForm.reset();
-                });
+        // Header Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if(window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px -1px rgba(0,0,0,0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
             }
+        });
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Close mobile menu if open
-                        if (mobileMenu.classList.contains('active')) {
-                            mobileMenu.classList.remove('active');
-                            overlay.classList.remove('active');
-                            menuIcon.style.display = 'block';
-                            closeIcon.style.display = 'none';
-                        }
+        // Accordion
+        const accItems = document.querySelectorAll('.accordion-header');
+        accItems.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const body = item.querySelector('.accordion-body');
+                
+                // Close others
+                document.querySelectorAll('.accordion-item').forEach(other => {
+                    if(other !== item) {
+                        other.classList.remove('active');
+                        other.querySelector('.accordion-body').style.maxHeight = null;
                     }
                 });
+
+                item.classList.toggle('active');
+                if(item.classList.contains('active')) {
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                } else {
+                    body.style.maxHeight = null;
+                }
             });
         });
     </script>
